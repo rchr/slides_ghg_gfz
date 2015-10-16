@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Richard Redweik &amp; Stefan Lüdtke" />
+  <title>CityGML - Applications, Open Data and Open Source Tools</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  		.reveal h1 { font-size: 2.5em; }
+  		.reveal h2 { font-size: 2em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">CityGML - Applications, Open Data and Open Source Tools</h1>
+    <h2 class="author">Richard Redweik &amp; Stefan Lüdtke</h2>
+    <h3 class="date">22. - 23. November 2015</h3>
+</section>
+
+<section id="working-with-citygml" class="level1">
+<h1>Working with CityGML</h1>
+<section id="recap" class="level2">
+<h2>Recap</h2>
+<p>Application independent geospatial information model</p>
+<p>Different thematic areas (buildings, water, vegetation, bridges etc.) International OGC standard <strong>Data model (UML)</strong> and <strong>exchange format</strong> (based on GML3) CityGML represents</p>
+<ul>
+<li>3D geometrey, 3D topology, semantics, and appearance</li>
+<li>in 5 discrete scales (levels of detail, LOD)</li>
+</ul>
+<p><strong>However!</strong></p>
+<p>CityGML datasets may become very large --&gt; Use database to work with!</p>
+</section>
+</section>
+<section id="agenda" class="level1">
+<h1>Agenda</h1>
+<ul>
+<li>3D City Database</li>
+<li>3D City Database Importer/Exporter</li>
+<li>QGIS</li>
+</ul>
+</section>
+<section id="dcitydb-overview" class="level1">
+<h1>3DCityDB-Overview</h1>
+<figure>
+<img src="./pictures/3DCityDB_System.png" alt="Source: Kunde, 2014" /><figcaption>Source: <a href="http://slides.com/fxku/3d-city-database#/">Kunde, 2014</a></figcaption>
+</figure>
+</section>
+<section id="dcitydb-details" class="level1">
+<h1>3DCityDB-Details</h1>
+<p>Free 3D geo database</p>
+<p>Enables to store, represent, and manage virtual 3D city models</p>
+<p>Realized as relational database schema for:</p>
+<ul>
+<li><strong>PostgreSQL/PostGIS</strong></li>
+<li>Oracle Spatial</li>
+</ul>
+</section>
+<section id="postgresql" class="level1">
+<h1>PostgreSQL</h1>
+<p>Relational Database Management System (RDBMS)</p>
+<p><strong>Open Source</strong></p>
+<p>Strong reputation for <strong>reliability</strong>, <strong>data integrity</strong> and <strong>correctness</strong></p>
+<p>Very good documentation</p>
+<p>Runs on Linux, Unix (MacOS, BSD), Windows</p>
+<p>pgAdmin as GUI for administration</p>
+</section>
+<section id="postgis" class="level1">
+<h1>PostGIS</h1>
+<section id="section" class="level2">
+<h2></h2>
+<p>Spatial extension for PostgreSQL</p>
+<p>Support for spatial objects (geometry, geography, raster)</p>
+<p>Spatial functions</p>
+<p>Multi-dimensional spatial indexing</p>
+</section>
+<section id="postgis---example" class="level2">
+<h2>PostGIS - Example</h2>
+<pre><code>SELECT name, pop FROM cities 
+WHERE pop &lt; 300000  
+AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
+</section>
+</section>
+<section id="d-city-database-importerexporter" class="level1">
+<h1>3D City Database Importer/Exporter</h1>
+<p>Front-end for 3D city database</p>
+<p>Allows importing and exporting of CityGML data into/from 3DCityDB</p>
+<p>Allows export in KML and COLLADA for visualization</p>
+<p>Offers GUI and CLI</p>
+</section>
+<section id="dcitydb-overview-1" class="level1">
+<h1>3DCityDB-Overview</h1>
+<figure>
+<img src="./pictures/3DCityDB_System.png" alt="Source: Kunde, 2014" /><figcaption>Source: <a href="http://slides.com/fxku/3d-city-database#/">Kunde, 2014</a></figcaption>
+</figure>
+</section>
+<section id="qgis" class="level1">
+<h1>QGIS</h1>
+<p>Previously known as <em>Quantum GIS</em></p>
+<p>Open source Geographic Information System (GIS)</p>
+<p>Integration of <strong>PostGIS</strong> and GRASS</p>
+<p>Runs on Linux, Unix, MacOS, Windows, Android</p>
+<p>Supports many vector, raster, and database formats and functionalities</p>
+<p>Customizable via plugins (C++, Python)</p>
+</section>
+<section id="d-city-model-berlin" class="level1">
+<h1>3D City Model Berlin</h1>
+<p>550.000 buildings on about 890 sqkm</p>
+<p>LOD2 building models with facade textures</p>
+<p>Can be downloaded and used as part of Berlin's Open Data Initiative</p>
+<p>Berlin 3D - <a href="http://www.businesslocationcenter.de/en/downloadportal">Download Portal</a></p>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: true,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'night', // available themes are in /css/theme
+        transition: 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
