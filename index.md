@@ -116,7 +116,7 @@ while the frontend application may run anywhere.
 
 ##
 
-![client server](./pictures/client_server.pkng)
+![client server](./pictures/client_server.png)
 
 ## SQL
 
@@ -138,39 +138,41 @@ while the frontend application may run anywhere.
 
 * interfaces to programming languages (R, python, PHP, etc.)
 
-## SQL flavour
+## SQL syntax-I
 
-*create database
+* create database
 
 ```
 CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
 ```
 
-*save data
+* save data
 
 ```
 INSERT INTO mesuremetns VALUES('2014-09-01', 10.456);
 ```
 
-*edit data
+* edit data
 
 ```
 UPDATE measurements SET value = value + 1;
 ```
 
-*query data
+## SQL syntax-II
+
+* query data
 
 ```
 SELECT value FROM measurements;
 ```
 
-*comparison
+* comparison
 
 ```
 SELECT value FROM measurements WHERE date > '2013-01-01';
 ```
 
-*summary and computations
+* summary and computations
 
 ```
 SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'

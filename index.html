@@ -25,7 +25,7 @@
   <script src="reveal.js/lib/js/html5shiv.js"></script>
   <![endif]-->
   <style type="text/css">
-  		.reveal h1 { font-size: 2.2em; }
+  		.reveal h1 { font-size: 2.0em; }
   		.reveal h2 { font-size: 1.7em; }
   </style>
 </head>
@@ -178,7 +178,7 @@
 <section id="section-1" class="level2">
 <h2></h2>
 <figure>
-<embed src="./pictures/client_server.pkng" /><figcaption>client server</figcaption>
+<img src="./pictures/client_server.png" alt="client server" /><figcaption>client server</figcaption>
 </figure>
 </section>
 <section id="sql" class="level2">
@@ -203,19 +203,34 @@
 <li><p>interfaces to programming languages (R, python, PHP, etc.)</p></li>
 </ul>
 </section>
-<section id="sql-flavour" class="level2">
-<h2>SQL flavour</h2>
-<p>*create database</p>
+<section id="sql-syntax-i" class="level2">
+<h2>SQL syntax-I</h2>
+<ul>
+<li>create database</li>
+</ul>
 <pre><code>CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);</code></pre>
-<p>*save data</p>
+<ul>
+<li>save data</li>
+</ul>
 <pre><code>INSERT INTO mesuremetns VALUES(&#39;2014-09-01&#39;, 10.456);</code></pre>
-<p>*edit data</p>
+<ul>
+<li>edit data</li>
+</ul>
 <pre><code>UPDATE measurements SET value = value + 1;</code></pre>
-<p>*query data</p>
+</section>
+<section id="sql-syntax-ii" class="level2">
+<h2>SQL syntax-II</h2>
+<ul>
+<li>query data</li>
+</ul>
 <pre><code>SELECT value FROM measurements;</code></pre>
-<p>*comparison</p>
+<ul>
+<li>comparison</li>
+</ul>
 <pre><code>SELECT value FROM measurements WHERE date &gt; &#39;2013-01-01&#39;;</code></pre>
-<p>*summary and computations</p>
+<ul>
+<li>summary and computations</li>
+</ul>
 <pre><code>SELECT MAX(value) AS max_val FROM measurements WHERE date &gt; &#39;2013-01-01&#39;</code></pre>
 </section>
 </section>
