@@ -25,8 +25,8 @@
   <script src="reveal.js/lib/js/html5shiv.js"></script>
   <![endif]-->
   <style type="text/css">
-  		.reveal h1 { font-size: 2.5em; }
-  		.reveal h2 { font-size: 2em; }
+  		.reveal h1 { font-size: 2.2em; }
+  		.reveal h2 { font-size: 1.7em; }
   </style>
 </head>
 <body>
@@ -51,6 +51,19 @@
 </ul>
 <p><strong>However!</strong></p>
 <p>CityGML datasets may become very large --&gt; Use database to work with!</p>
+</section>
+<section id="need-for-database-some-examples" class="level2">
+<h2>Need for database? some examples</h2>
+<ul>
+<li>multiple simultaneous changes to data (concurrency)</li>
+<li>data changes on a regular basis</li>
+<li>large data sets where you only need some observations/ variables</li>
+<li>share huge data set among many people (data consistency in a working groug!)</li>
+<li>rapid queries</li>
+<li>web interfaces to data, especially dynamic data</li>
+<li>data bases are collections of tables (2d with columns and rows)</li>
+<li>very good for combining information from several tables</li>
+</ul>
 </section>
 </section>
 <section id="agenda" class="level1">
@@ -79,21 +92,207 @@
 </section>
 <section id="postgresql" class="level1">
 <h1>PostgreSQL</h1>
-<p>Relational Database Management System (RDBMS)</p>
-<p><strong>Open Source</strong></p>
-<p>Strong reputation for <strong>reliability</strong>, <strong>data integrity</strong> and <strong>correctness</strong></p>
-<p>Very good documentation</p>
-<p>Runs on Linux, Unix (MacOS, BSD), Windows</p>
-<p>pgAdmin as GUI for administration</p>
+<section id="section" class="level2">
+<h2></h2>
+<ul>
+<li><p>Relational Database Management System (RDBMS)</p></li>
+<li><p><strong>Open Source</strong></p></li>
+<li><p>Strong reputation for <strong>reliability</strong>, <strong>data integrity</strong> and <strong>correctness</strong></p></li>
+<li><p>Very good documentation</p></li>
+<li><p>Runs on Linux, Unix (MacOS, BSD), Windows</p></li>
+<li><p>pgAdmin as GUI for administration</p></li>
+</ul>
+</section>
+<section id="postgresql-and-postgis" class="level2">
+<h2>PostgreSQL and PostGIS</h2>
+<figure>
+<img src="./pictures/icon_postgresql.png" alt="icon" /><figcaption>icon</figcaption>
+</figure>
+<ul>
+<li>PostgreSQL is a powerful, <em>open source</em> object-relational database system</li>
+<li>&gt; 15 years of active development and a proven architecture</li>
+<li>runs on all major operating systems, including Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64), and Windows</li>
+<li>It includes most SQL:2008 data types, including INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVAL, and TIMESTAMP</li>
+<li>It also supports storage of binary large objects, including pictures, sounds, or video</li>
+<li>diverse native programming interfaces (C/C++, Java, .Net, Perl, Python, ... )</li>
+<li>comprehensive documentation</li>
+</ul>
+</section>
+<section id="key-features" class="level2">
+<h2>Key features</h2>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Limit</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Database Size</td>
+<td style="text-align: center;">Unlimited</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maximum Table Size</td>
+<td style="text-align: center;">32 TB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maximum Row Size</td>
+<td style="text-align: center;">1.6 TB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maximum Field Size</td>
+<td style="text-align: center;">1 GB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maximum Rows per Table</td>
+<td style="text-align: center;">Unlimited</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maximum Columns per Table</td>
+<td style="text-align: center;">250 - 1600 depending on column types</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maximum Indexes per Table</td>
+<td style="text-align: center;">Unlimited</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="architecture" class="level2">
+<h2>Architecture</h2>
+<ul>
+<li>The library (frontend) sends user requests over the network to the postmaster.</li>
+<li>Postmaster starts a new backend server process and connects the frontend process to the new server.</li>
+<li>Frontend process and the backend server communicate without intervention by the postmaster.</li>
+<li>the postmaster and the backend always run on the same machine (the database server), while the frontend application may run anywhere.</li>
+<li>data base server can contain many databases</li>
+<li>PostgreSQL uses a message-based protocol for communication between frontends and backends (clients and servers)</li>
+<li>The protocol is supported over TCP/IP</li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2></h2>
+<figure>
+<embed src="./pictures/client_server.pkng" /><figcaption>client server</figcaption>
+</figure>
+</section>
+<section id="sql" class="level2">
+<h2>SQL</h2>
+<ul>
+<li>Structured Query Language</li>
+<li>... is a computer language to save, edit and query data in relational data bases</li>
+<li>first version in 1974 (IBM)</li>
+<li>SQL became a standard of the American National Standards Institute (ANSI) in 1986</li>
+<li>revised in 1999: SQL99 or SQL3</li>
+<li>SQL has standards but also some pecularities depending on the database management system</li>
+<li>'Talk' to the database server</li>
+<li>used as front end for postgresql</li>
+<li>case sensitive (usually upper case for keywords)</li>
+</ul>
+</section>
+<section id="ways-to-use-sql" class="level2">
+<h2>ways to use SQL</h2>
+<ul>
+<li><p>console command (psql -h hostaddress -U db_name)</p></li>
+<li><p>GUI (pgadmin)</p></li>
+<li><p>interfaces to programming languages (R, python, PHP, etc.)</p></li>
+</ul>
+</section>
+<section id="sql-flavour" class="level2">
+<h2>SQL flavour</h2>
+<p>*create database</p>
+<pre><code>CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);</code></pre>
+<p>*save data</p>
+<pre><code>INSERT INTO mesuremetns VALUES(&#39;2014-09-01&#39;, 10.456);</code></pre>
+<p>*edit data</p>
+<pre><code>UPDATE measurements SET value = value + 1;</code></pre>
+<p>*query data</p>
+<pre><code>SELECT value FROM measurements;</code></pre>
+<p>*comparison</p>
+<pre><code>SELECT value FROM measurements WHERE date &gt; &#39;2013-01-01&#39;;</code></pre>
+<p>*summary and computations</p>
+<pre><code>SELECT MAX(value) AS max_val FROM measurements WHERE date &gt; &#39;2013-01-01&#39;</code></pre>
+</section>
 </section>
 <section id="postgis" class="level1">
 <h1>PostGIS</h1>
-<section id="section" class="level2">
+<section id="section-2" class="level2">
 <h2></h2>
-<p>Spatial extension for PostgreSQL</p>
-<p>Support for spatial objects (geometry, geography, raster)</p>
-<p>Spatial functions</p>
-<p>Multi-dimensional spatial indexing</p>
+<ul>
+<li><p>Spatial extension for PostgreSQL</p></li>
+<li><p>Support for spatial objects (geometry, geography, raster)</p></li>
+<li><p>Spatial functions</p></li>
+<li><p>Multi-dimensional spatial indexing</p></li>
+</ul>
+</section>
+<section id="additional-data-type-for-a-geometry" class="level2">
+<h2>Additional data type for a geometry</h2>
+<p>The geometry is stored in a extra column, usually termed <em>geom</em> or <em>the_geom</em>, all based the following <a href="http://postgis.net/docs/manual-2.1/using_postgis_dbmanagement.html">link</a></p>
+<ul>
+<li>uses Well-Known Binary (WKB) and Well-Known Text (WKT) Representations defined by <em>OGC</em></li>
+<li>POINT (0 0)</li>
+<li>LINESTRING (0 0,1 1,1 2)</li>
+<li>POLYGON ((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))</li>
+<li>MULTIPOINT ((0 0),(1 2))</li>
+<li>MULTILINESTRING ((0 0,1 1,1 2),(2 3,3 2,5 4))</li>
+</ul>
+</section>
+<section id="postgis-provides" class="level2">
+<h2>PostGIS provides</h2>
+<ul>
+<li>Processing and analytic functions for both vector and raster data for splicing, dicing, morphing, reclassifying, and collecting/unioning with the power of SQL</li>
+<li>raster map algebra for fine-grained raster processing</li>
+<li>Spatial reprojection SQL callable functions for both vector and raster data</li>
+<li>Support for importing / exporting ESRI shapefile vector data via both commandline and GUI packaged tools and support for more formats via other 3rd-party Open Source tools</li>
+<li>Packaged command-line for importing raster data from many standard formats: GeoTiff, NetCDF, PNG, JPG to name a few</li>
+<li>Rendering and importing vector data support functions for standard textual formats such as KML,GML, GeoJSON,GeoHash and WKT using SQL</li>
+<li>Rendering raster data in various standard formats GeoTIFF, PNG, JPG, NetCDF, to name a few using SQL</li>
+<li>Seamless raster/vector SQL callable functions for extrusion of pixel values by geometric region, running stats by region, clipping rasters by a geometry, and vectorizing rasters</li>
+<li>3D object support, spatial index, and functions</li>
+<li>Network Topology support</li>
+</ul>
+</section>
+<section id="postgis-functions" class="level2">
+<h2>PostGIS functions</h2>
+<p><strong>the PostGIS extension offers <em>full</em> GIS functionality ...</strong></p>
+<ul>
+<li>reprojection</li>
+<li>area calculations</li>
+<li>intersect, union, merge ...</li>
+</ul>
+<p><br />
+<br />
+</p>
+<p><strong>... among all data-types</strong></p>
+<ul>
+<li>all vector types supported (point, line, area ...)</li>
+<li>raster layers supported as well</li>
+</ul>
+<p><br />
+<br />
+</p>
+<p><strong>and standard interfaces for visualization</strong></p>
+<ul>
+<li>QGIS, GRASS spatial layers from a Postgres DB out of the box</li>
+<li>ArcMap is supposed to do so as well</li>
+</ul>
+</section>
+<section id="st_-functions" class="level2">
+<h2>ST_() Functions</h2>
+<p>A bunch of ST_() Functions are available to work with the <em>geom</em> column</p>
+<ul>
+<li>getting the CRS of the table/layer</li>
+</ul>
+<pre><code>SELECT ST_SRID(geom) from catchments;</code></pre>
+<ul>
+<li>re-project a column into a different CRS</li>
+</ul>
+<pre><code>UPDATE subbasins SET geom = ST_TRANSFORM(geom, 4326);</code></pre>
 </section>
 <section id="postgis---example" class="level2">
 <h2>PostGIS - Example</h2>
@@ -130,6 +329,59 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <p>LOD2 building models with facade textures</p>
 <p>Can be downloaded and used as part of Berlin's Open Data Initiative</p>
 <p>Berlin 3D - <a href="http://www.businesslocationcenter.de/en/downloadportal">Download Portal</a></p>
+</section>
+<section id="data-modelling" class="level1">
+<h1>Data modelling</h1>
+<section id="section-3" class="level2">
+<h2></h2>
+<p>is <strong>fundamental</strong> for efficient</p>
+<ul>
+<li>storage of data</li>
+<li>data maintenance</li>
+<li>work with data</li>
+</ul>
+</section>
+<section id="database-normalisation" class="level2">
+<h2>Database normalisation</h2>
+<p>Normalisation is the formalisation of the design process of making a database compliant with the concept of a Normal Form.</p>
+<p>It addresses various ways in which we may look for repeating data values in a table.</p>
+<p>There are several levels of the Normal Form, and each level requires that the previous level be satisfied.</p>
+<p>The normalization process is based on collecting an exhaustive list of all data items to be maintained in the database and starting the design with a few &quot;superset&quot; tables.</p>
+</section>
+<section id="normalisation--first-normal-form" class="level2">
+<h2>Normalisation- First Normal Form</h2>
+<p>For best results, start with a reasonable breakdown of all attributes in different tables</p>
+<p>Reduce entities to first normal form (1NF) by removing repeating or multivalued attributes to another, child entity.</p>
+<p>Basically, make sure that the data is represented as a (proper) table.</p>
+<p>While key to the relational principles, this is somewhat a motherhood statement.</p>
+</section>
+<section id="normalisation--first-normal-form-1" class="level2">
+<h2>Normalisation- First Normal Form</h2>
+<p>However, there are six properties of a relational table (the formal name for &quot;table&quot; is &quot;relation&quot;):</p>
+<ol type="1">
+<li>Entries in columns are single-valued.</li>
+<li>Entries in columns are of the same kind.</li>
+<li>Each row is unique.</li>
+<li>Sequence of columns is insignificant.</li>
+<li>Sequence of rows is insignificant.</li>
+<li>Each column has a unique name.</li>
+</ol>
+<p><br />
+ The most common sins against the first normal form (1NF) are the lack of a Primary Key and the use of &quot;repeating columns.&quot;</p>
+</section>
+<section id="normalisation--second-normal-form" class="level2">
+<h2>Normalisation- Second Normal Form</h2>
+<p>Reduce first normal form entities to second normal form (2NF) by removing attributes that are not dependent on the whole primary key.</p>
+<p>The purpose here is to make sure that each column is defined in the correct table. Using the more formal names may make this a little clearer. Make sure each attribute is kept with the entity that it describes.</p>
+</section>
+<section id="normalisation--third-normal-form" class="level2">
+<h2>Normalisation- Third Normal Form</h2>
+<p>Reduce second normal form entities to third normal form (3NF) by removing attributes that depend on other, non-key attributes (other than alternative keys).</p>
+<p>This basically means that we shouldn't store any data that can either be derived from other columns or belong in another table</p>
+<p><br />
+<br />
+ * for more background and guidance <a href="http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm">code guru</a></p>
+</section>
 </section>
     </div>
   </div>
