@@ -10,6 +10,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
@@ -396,6 +433,132 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <p><br />
 <br />
  * for more background and guidance <a href="http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm">code guru</a></p>
+</section>
+</section>
+<section id="hands-on" class="level1">
+<h1>Hands-On</h1>
+</section>
+<section id="create-database" class="level1">
+<h1>Create Database</h1>
+<p>Execute following statement as PostgreSQL admin:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">DATABASE</span> ghg_handson
+<span class="kw">WITH</span> OWNER = ghg;</code></pre></div>
+<p>... and to enable PostGIS:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> EXTENSION postgis;</code></pre></div>
+<p>It is already done on the VM! \o/</p>
+</section>
+<section id="create-3d-city-database-3dcitydb" class="level1">
+<h1>Create 3D City Database (3DCityDB)</h1>
+<section id="section-4" class="level2">
+<h2></h2>
+<p>The 3DCityDB is a relational database schema</p>
+<p>Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS</p>
+<p>Schema is like a 'blueprint' of the database</p>
+<p>To create the schema with its tables execute:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
+<span class="kw">psql</span> ghg_handson -f CREATE_DB.sql</code></pre></div>
+</section>
+<section id="section-5" class="level2">
+<h2></h2>
+<p>Setup requires user input:</p>
+<ol type="1">
+<li>Spatial Reference Identifier for geometry objects (SRID):</li>
+</ol>
+<p><strong>25833</strong></p>
+<ol start="2" type="1">
+<li>GML conformant URN encoding for gml:srsName attributes:</li>
+</ol>
+<p><strong>urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783</strong></p>
+</section>
+</section>
+<section id="import-city-model" class="level1">
+<h1>Import City Model</h1>
+<section id="section-6" class="level2">
+<h2></h2>
+<p>Start 3D City Database Importer/Exporter <img src="./pictures/impexp.png" alt="impexp" /></p>
+</section>
+<section id="connect-to-database" class="level2">
+<h2>Connect to Database</h2>
+<figure>
+<img src="./pictures/impexp_database.png" alt="" />
+</figure>
+</section>
+<section id="do-the-import" class="level2">
+<h2>Do the import</h2>
+<figure>
+<img src="./pictures/impexp_import.png" alt="" />
+</figure>
+</section>
+</section>
+<section id="play-around-with-pgadmin" class="level1">
+<h1>Play around with pgAdmin</h1>
+</section>
+<section id="export-data-with-qgis" class="level1">
+<h1>Export data with QGIS</h1>
+<section id="section-7" class="level2">
+<h2></h2>
+<p>Open QGIS Desktop</p>
+<p>Add new database: Click on the PostGIS logo (Elephant) Select 'New'</p>
+</section>
+<section id="add-new-database" class="level2">
+<h2>Add New Database</h2>
+<figure>
+<img src="./pictures/qgis_database.png" alt="" />
+</figure>
+</section>
+<section id="query-buildings-from-db-i" class="level2">
+<h2>Query Buildings from DB I</h2>
+<figure>
+<img src="./pictures/qgis_db2.png" alt="" />
+</figure>
+</section>
+<section id="query-buildings-from-db-ii" class="level2">
+<h2>Query Buildings from DB II</h2>
+<p>Execute following query:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">WITH</span>
+groundSurfaces <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> thematic_surface.* 
+    <span class="kw">FROM</span> citydb.thematic_surface <span class="kw">INNER</span> <span class="kw">JOIN</span> citydb.objectclass 
+    <span class="kw">ON</span> objectclass.id = thematic_surface.objectclass_id 
+    <span class="kw">WHERE</span> classname=<span class="st">&#39;BuildingGroundSurface&#39;</span>
+),
+surfaceGeometries <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> *
+    <span class="kw">FROM</span> citydb.surface_geometry <span class="kw">INNER</span> <span class="kw">JOIN</span> groundSurfaces
+    <span class="kw">ON</span> groundSurfaces.lod2_multi_surface_id = surface_geometry.parent_id
+    <span class="kw">WHERE</span> geometry <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>
+),
+heights <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> measured_height, surfaceGeometries.*
+    <span class="kw">FROM</span> citydb.building <span class="kw">INNER</span> <span class="kw">JOIN</span> surfaceGeometries
+    <span class="kw">ON</span> building.id = surfaceGeometries.building_id
+)
+<span class="kw">SELECT</span> <span class="fu">row_number</span>() <span class="kw">OVER</span>() <span class="kw">As</span> <span class="kw">id</span>, building_id, 
+measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span class="kw">FROM</span> heights;</code></pre></div>
+</section>
+<section id="query-buildings-from-db-ii-1" class="level2">
+<h2>Query Buildings from DB II</h2>
+<figure>
+<img src="./pictures/qgis_db3.png" alt="" />
+</figure>
+</section>
+<section id="buildings-with-attributes" class="level2">
+<h2>Buildings with Attributes</h2>
+<figure>
+<img src="./pictures/qgis_db4.png" alt="" />
+</figure>
+</section>
+<section id="export-to-shape-i" class="level2">
+<h2>Export to Shape I</h2>
+<figure>
+<img src="./pictures/qgis_db5.png" alt="" />
+</figure>
+</section>
+<section id="export-to-shape-ii" class="level2">
+<h2>Export to Shape II</h2>
+<figure>
+<img src="./pictures/qgis_db6.png" alt="" />
+</figure>
 </section>
 </section>
     </div>

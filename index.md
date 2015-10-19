@@ -4,7 +4,7 @@
 
 # Working with CityGML
 
-## Recap
+## Recap 
 
 Application independent geospatial information model
 
@@ -370,3 +370,104 @@ This basically means that we shouldn't store any data that can either be derived
 
 * for more background and guidance 
 [code guru](http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm)
+
+# Hands-On
+
+# Create Database
+Execute following statement as PostgreSQL admin:
+```sql
+CREATE DATABASE ghg_handson
+WITH OWNER = ghg;
+```
+... and to enable PostGIS:
+```sql
+CREATE EXTENSION postgis;
+```
+It is already done on the VM! \\o/
+
+# Create 3D City Database (3DCityDB)
+##
+The 3DCityDB is a relational database schema
+
+Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS
+
+Schema is like a 'blueprint' of the database
+
+To create the schema with its tables execute:
+```bash
+cd /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
+psql ghg_handson -f CREATE_DB.sql
+```
+## 
+Setup requires user input:
+
+1. Spatial Reference Identifier for geometry objects (SRID):
+
+**25833**
+
+2. GML conformant URN encoding for gml:srsName attributes:
+
+**urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783**
+
+# Import City Model
+##
+Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png) 
+
+## Connect to Database
+![](./pictures/impexp_database.png)
+
+## Do the import
+![](./pictures/impexp_import.png)
+
+# Play around with pgAdmin
+
+# Export data with QGIS
+##
+Open QGIS Desktop
+
+Add new database:
+	Click on the PostGIS logo (Elephant)
+	Select 'New'
+
+## Add New Database
+![](./pictures/qgis_database.png)
+
+## Query Buildings from DB I
+![](./pictures/qgis_db2.png)
+
+## Query Buildings from DB II
+Execute following query:
+```sql
+WITH
+groundSurfaces AS (
+	SELECT thematic_surface.* 
+	FROM citydb.thematic_surface INNER JOIN citydb.objectclass 
+	ON objectclass.id = thematic_surface.objectclass_id 
+	WHERE classname='BuildingGroundSurface'
+),
+surfaceGeometries AS (
+	SELECT *
+	FROM citydb.surface_geometry INNER JOIN groundSurfaces
+	ON groundSurfaces.lod2_multi_surface_id = surface_geometry.parent_id
+	WHERE geometry IS NOT NULL
+),
+heights AS (
+	SELECT measured_height, surfaceGeometries.*
+	FROM citydb.building INNER JOIN surfaceGeometries
+	ON building.id = surfaceGeometries.building_id
+)
+SELECT row_number() OVER() As id, building_id, 
+measured_height, ST_Force2d(geometry) AS footprint FROM heights;
+```
+
+## Query Buildings from DB II
+![](./pictures/qgis_db3.png)
+
+## Buildings with Attributes
+![](./pictures/qgis_db4.png)
+
+## Export to Shape I
+![](./pictures/qgis_db5.png)
+
+## Export to Shape II
+![](./pictures/qgis_db6.png)
