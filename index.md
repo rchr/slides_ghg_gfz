@@ -142,19 +142,19 @@ while the frontend application may run anywhere.
 
 * create database
 
-```
+```sql
 CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
 ```
 
 * save data
 
-```
+```sql
 INSERT INTO mesuremetns VALUES('2014-09-01', 10.456);
 ```
 
 * edit data
 
-```
+```sql
 UPDATE measurements SET value = value + 1;
 ```
 
@@ -162,19 +162,19 @@ UPDATE measurements SET value = value + 1;
 
 * query data
 
-```
+```sql
 SELECT value FROM measurements;
 ```
 
 * comparison
 
-```
+```sql
 SELECT value FROM measurements WHERE date > '2013-01-01';
 ```
 
 * summary and computations
 
-```
+```sql
 SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'
 ```
 

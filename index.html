@@ -245,30 +245,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>create database</li>
 </ul>
-<pre><code>CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);</code></pre>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> measurements(<span class="kw">id</span> BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">DEFAULT</span>, <span class="dt">date</span> <span class="dt">TIMESTAMP</span> <span class="kw">WITH</span> <span class="dt">TIME</span> <span class="dt">ZONE</span>, <span class="fu">value</span> <span class="dt">DOUBLE</span> <span class="dt">PRECISION</span>);</code></pre></div>
 <ul>
 <li>save data</li>
 </ul>
-<pre><code>INSERT INTO mesuremetns VALUES(&#39;2014-09-01&#39;, 10.456);</code></pre>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">INSERT</span> <span class="kw">INTO</span> mesuremetns <span class="kw">VALUES</span>(<span class="st">&#39;2014-09-01&#39;</span>, <span class="fl">10.456</span>);</code></pre></div>
 <ul>
 <li>edit data</li>
 </ul>
-<pre><code>UPDATE measurements SET value = value + 1;</code></pre>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> measurements <span class="kw">SET</span> <span class="fu">value</span> = <span class="fu">value</span> + <span class="dv">1</span>;</code></pre></div>
 </section>
 <section id="sql-syntax-ii" class="level2">
 <h2>SQL syntax-II</h2>
 <ul>
 <li>query data</li>
 </ul>
-<pre><code>SELECT value FROM measurements;</code></pre>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements;</code></pre></div>
 <ul>
 <li>comparison</li>
 </ul>
-<pre><code>SELECT value FROM measurements WHERE date &gt; &#39;2013-01-01&#39;;</code></pre>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span>;</code></pre></div>
 <ul>
 <li>summary and computations</li>
 </ul>
-<pre><code>SELECT MAX(value) AS max_val FROM measurements WHERE date &gt; &#39;2013-01-01&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="fu">value</span>) <span class="kw">AS</span> max_val <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span></code></pre></div>
 </section>
 </section>
 <section id="postgis" class="level1">
