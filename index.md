@@ -524,7 +524,6 @@ Example building:
 ![](./pictures/qgis_building_attribs.png)
 
 ## Export to Shape I
-![](./pictures/qgis_db5.png)
 
 Do a right-click onto the layer:
 
