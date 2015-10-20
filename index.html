@@ -76,8 +76,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <h3 class="date">22. - 23. November 2015</h3>
 </section>
 
-<section id="working-with-citygml" class="level1">
-<h1>Working with CityGML</h1>
+<section id="section" class="level1">
+<h1></h1>
+<section id="working-with-citygml" class="level2">
+<h2>Working with CityGML</h2>
+</section>
 <section id="recap" class="level2">
 <h2>Recap</h2>
 <p>Application independent geospatial information model</p>
@@ -103,22 +106,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 </section>
 </section>
-<section id="agenda" class="level1">
-<h1>Agenda</h1>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="agenda" class="level2">
+<h2>Agenda</h2>
 <ul>
 <li>3D City Database</li>
 <li>3D City Database Importer/Exporter</li>
 <li>QGIS</li>
 </ul>
 </section>
-<section id="dcitydb-overview" class="level1">
-<h1>3DCityDB-Overview</h1>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+<section id="dcitydb-overview" class="level2">
+<h2>3DCityDB-Overview</h2>
 <figure>
 <img src="./pictures/3DCityDB_System.png" alt="Source: Kunde, 2014" /><figcaption>Source: <a href="http://slides.com/fxku/3d-city-database#/">Kunde, 2014</a></figcaption>
 </figure>
 </section>
-<section id="dcitydb-details" class="level1">
-<h1>3DCityDB-Details</h1>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+<section id="dcitydb-details" class="level2">
+<h2>3DCityDB-Details</h2>
 <p>Free 3D geo database</p>
 <p>Enables to store, represent, and manage virtual 3D city models</p>
 <p>Realized as relational database schema for:</p>
@@ -127,10 +138,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Oracle Spatial</li>
 </ul>
 </section>
-<section id="postgresql" class="level1">
-<h1>PostgreSQL</h1>
-<section id="section" class="level2">
-<h2></h2>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<section id="postgresql" class="level2">
+<h2>PostgreSQL</h2>
 <ul>
 <li><p>Relational Database Management System (RDBMS)</p></li>
 <li><p><strong>Open Source</strong></p></li>
@@ -212,7 +224,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>The protocol is supported over TCP/IP</li>
 </ul>
 </section>
-<section id="section-1" class="level2">
+<section id="section-5" class="level2">
 <h2></h2>
 <figure>
 <img src="./pictures/client_server.png" alt="client server" /><figcaption>client server</figcaption>
@@ -271,10 +283,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>SELECT MAX(value) AS max_val FROM measurements WHERE date &gt; &#39;2013-01-01&#39;</code></pre>
 </section>
 </section>
-<section id="postgis" class="level1">
-<h1>PostGIS</h1>
-<section id="section-2" class="level2">
-<h2></h2>
+<section id="section-6" class="level1">
+<h1></h1>
+<section id="postgis" class="level2">
+<h2>PostGIS</h2>
 <ul>
 <li><p>Spatial extension for PostgreSQL</p></li>
 <li><p>Support for spatial objects (geometry, geography, raster)</p></li>
@@ -353,21 +365,29 @@ WHERE pop &lt; 300000
 AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 </section>
 </section>
-<section id="d-city-database-importerexporter" class="level1">
-<h1>3D City Database Importer/Exporter</h1>
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="d-city-database-importerexporter" class="level2">
+<h2>3D City Database Importer/Exporter</h2>
 <p>Front-end for 3D city database</p>
 <p>Allows importing and exporting of CityGML data into/from 3DCityDB</p>
 <p>Allows export in KML and COLLADA for visualization</p>
 <p>Offers GUI and CLI</p>
 </section>
-<section id="dcitydb-overview-1" class="level1">
-<h1>3DCityDB-Overview</h1>
+</section>
+<section id="section-8" class="level1">
+<h1></h1>
+<section id="dcitydb-overview-1" class="level2">
+<h2>3DCityDB-Overview</h2>
 <figure>
 <img src="./pictures/3DCityDB_System.png" alt="Source: Kunde, 2014" /><figcaption>Source: <a href="http://slides.com/fxku/3d-city-database#/">Kunde, 2014</a></figcaption>
 </figure>
 </section>
-<section id="qgis" class="level1">
-<h1>QGIS</h1>
+</section>
+<section id="section-9" class="level1">
+<h1></h1>
+<section id="qgis" class="level2">
+<h2>QGIS</h2>
 <p>Previously known as <em>Quantum GIS</em></p>
 <p>Open source Geographic Information System (GIS)</p>
 <p>Integration of <strong>PostGIS</strong> and GRASS</p>
@@ -375,17 +395,21 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <p>Supports many vector, raster, and database formats and functionalities</p>
 <p>Customizable via plugins (C++, Python)</p>
 </section>
-<section id="d-city-model-berlin" class="level1">
-<h1>3D City Model Berlin</h1>
+</section>
+<section id="section-10" class="level1">
+<h1></h1>
+<section id="d-city-model-berlin" class="level2">
+<h2>3D City Model Berlin</h2>
 <p>550.000 buildings on about 890 sqkm</p>
 <p>LOD2 building models with facade textures</p>
 <p>Can be downloaded and used as part of Berlin's Open Data Initiative</p>
 <p>Berlin 3D - <a href="http://www.businesslocationcenter.de/en/downloadportal">Download Portal</a></p>
 </section>
-<section id="data-modelling" class="level1">
-<h1>Data modelling</h1>
-<section id="section-3" class="level2">
-<h2></h2>
+</section>
+<section id="section-11" class="level1">
+<h1></h1>
+<section id="data-modelling" class="level2">
+<h2>Data modelling</h2>
 <p>is <strong>fundamental</strong> for efficient</p>
 <ul>
 <li>storage of data</li>
@@ -435,11 +459,21 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
  * for more background and guidance <a href="http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm">code guru</a></p>
 </section>
 </section>
-<section id="hands-on" class="level1">
-<h1>Hands-On</h1>
+<section id="section-12" class="level1">
+<h1></h1>
+<section id="hands-on" class="level2">
+<h2>Hands-On</h2>
+<p>Create Database</p>
+<p>Create 3D City Database</p>
+<p>Import City Model</p>
+<p>Inspect Database with pgAdmin</p>
+<p>Export building data with QGIS</p>
 </section>
-<section id="create-database" class="level1">
-<h1>Create Database</h1>
+</section>
+<section id="section-13" class="level1">
+<h1></h1>
+<section id="create-database" class="level2">
+<h2>Create Database</h2>
 <p>Execute following statement as PostgreSQL admin:</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">DATABASE</span> ghg_handson
 <span class="kw">WITH</span> OWNER = ghg;</code></pre></div>
@@ -447,10 +481,11 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> EXTENSION postgis;</code></pre></div>
 <p>It is already done on the VM! \o/</p>
 </section>
-<section id="create-3d-city-database-3dcitydb" class="level1">
-<h1>Create 3D City Database (3DCityDB)</h1>
-<section id="section-4" class="level2">
-<h2></h2>
+</section>
+<section id="section-14" class="level1">
+<h1></h1>
+<section id="create-3d-city-database-3dcitydb" class="level2">
+<h2>Create 3D City Database (3DCityDB)</h2>
 <p>The 3DCityDB is a relational database schema</p>
 <p>Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS</p>
 <p>Schema is like a 'blueprint' of the database</p>
@@ -458,7 +493,7 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 <span class="kw">psql</span> ghg_handson -f CREATE_DB.sql</code></pre></div>
 </section>
-<section id="section-5" class="level2">
+<section id="section-15" class="level2">
 <h2></h2>
 <p>Setup requires user input:</p>
 <ol type="1">
@@ -471,10 +506,10 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <p><strong>urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783</strong></p>
 </section>
 </section>
-<section id="import-city-model" class="level1">
-<h1>Import City Model</h1>
-<section id="section-6" class="level2">
-<h2></h2>
+<section id="section-16" class="level1">
+<h1></h1>
+<section id="import-city-model" class="level2">
+<h2>Import City Model</h2>
 <p>Start 3D City Database Importer/Exporter <img src="./pictures/impexp.png" alt="impexp" /></p>
 </section>
 <section id="connect-to-database" class="level2">
@@ -493,12 +528,21 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <section id="play-around-with-pgadmin" class="level1">
 <h1>Play around with pgAdmin</h1>
 </section>
-<section id="export-data-with-qgis" class="level1">
-<h1>Export data with QGIS</h1>
-<section id="section-7" class="level2">
-<h2></h2>
-<p>Open QGIS Desktop</p>
-<p>Add new database: Click on the PostGIS logo (Elephant) Select 'New'</p>
+<section id="section-17" class="level1">
+<h1></h1>
+<section id="export-data-with-qgis" class="level2">
+<h2>Export data with QGIS</h2>
+</section>
+<section id="start-qgis" class="level2">
+<h2>Start QGIS</h2>
+<ol type="1">
+<li><p>Open QGIS Desktop</p></li>
+<li><p>Add new database:</p>
+<ol type="1">
+<li><p>Click on the PostGIS logo (Elephant)</p></li>
+<li><p>Select 'New'</p></li>
+</ol></li>
+</ol>
 </section>
 <section id="add-new-database" class="level2">
 <h2>Add New Database</h2>
@@ -506,14 +550,16 @@ AND ST_Area(cities.the_geom) &lt; 400000000;</code></pre>
 <img src="./pictures/qgis_database.png" alt="" />
 </figure>
 </section>
-<section id="query-buildings-from-db-i" class="level2">
-<h2>Query Buildings from DB I</h2>
+<section id="query-buildings-from-db" class="level2">
+<h2>Query Buildings from DB</h2>
+<p>Open 'Database' &gt; 'DB Manager' &gt; 'DB Manager'</p>
+<p>Select database 'ghg_handson' and open 'SQL window'</p>
 <figure>
 <img src="./pictures/qgis_db2.png" alt="" />
 </figure>
 </section>
-<section id="query-buildings-from-db-ii" class="level2">
-<h2>Query Buildings from DB II</h2>
+<section id="query-buildings-from-db-cont." class="level2">
+<h2>Query Buildings from DB (cont.)</h2>
 <p>Execute following query:</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">WITH</span>
 groundSurfaces <span class="kw">AS</span> (
@@ -536,8 +582,14 @@ heights <span class="kw">AS</span> (
 <span class="kw">SELECT</span> <span class="fu">row_number</span>() <span class="kw">OVER</span>() <span class="kw">As</span> <span class="kw">id</span>, building_id, 
 measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span class="kw">FROM</span> heights;</code></pre></div>
 </section>
-<section id="query-buildings-from-db-ii-1" class="level2">
-<h2>Query Buildings from DB II</h2>
+<section id="query-buildings-from-db-cont.-1" class="level2">
+<h2>Query Buildings from DB (cont.)</h2>
+<p>Select 'Load as new layer'</p>
+<p>'Column with unique integer values' : 'id'</p>
+<p>'Geometry column' : 'footprint'</p>
+</section>
+<section id="query-buildings-from-db-cont.-2" class="level2">
+<h2>Query Buildings from DB (cont.)</h2>
 <figure>
 <img src="./pictures/qgis_db3.png" alt="" />
 </figure>
@@ -548,10 +600,18 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <img src="./pictures/qgis_db4.png" alt="" />
 </figure>
 </section>
+<section id="buildings-with-attributes-1" class="level2">
+<h2>Buildings with Attributes</h2>
+<p>Example building:</p>
+<figure>
+<img src="./pictures/qgis_building_attribs.png" alt="" />
+</figure>
+</section>
 <section id="export-to-shape-i" class="level2">
 <h2>Export to Shape I</h2>
+<p>Do a right-click onto the layer:</p>
 <figure>
-<img src="./pictures/qgis_db5.png" alt="" />
+<img src="./pictures/qgis_save_as.png" alt="" />
 </figure>
 </section>
 <section id="export-to-shape-ii" class="level2">

@@ -2,7 +2,8 @@
 % Richard Redweik & Stefan Lüdtke
 % 22. - 23. November 2015
 
-# Working with CityGML
+#
+## Working with CityGML
 
 ## Recap 
 
@@ -31,18 +32,21 @@ CityGML datasets may become very large --&gt; Use database to work with!
 * data bases are collections of tables (2d with columns and rows)
 * very good for combining information from several tables
 
-# Agenda
+# 
+## Agenda
 
 - 3D City Database
 - 3D City Database Importer/Exporter
 - QGIS
 
-# 3DCityDB-Overview
+# 
+## 3DCityDB-Overview
 
 ![Source: [Kunde, 2014](http://slides.com/fxku/3d-city-database#/)](./pictures/3DCityDB_System.png)
 
 
-# 3DCityDB-Details
+#
+## 3DCityDB-Details
 
 Free 3D geo database
 
@@ -53,8 +57,9 @@ Realized as relational database schema for:
 - **PostgreSQL/PostGIS**
 - Oracle Spatial
 
-#PostgreSQL
-##
+#
+## PostgreSQL
+
 
 * Relational Database Management System (RDBMS)
 
@@ -69,7 +74,7 @@ Realized as relational database schema for:
 
 * pgAdmin as GUI for administration
 
-##PostgreSQL and PostGIS
+## PostgreSQL and PostGIS
 
 ![icon](./pictures/icon_postgresql.png)
 
@@ -178,9 +183,8 @@ SELECT value FROM measurements WHERE date > '2013-01-01';
 SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'
 ```
 
-
-# PostGIS
-##
+#
+## PostGIS
 
 * Spatial extension for PostgreSQL
 
@@ -204,7 +208,7 @@ the following [link](http://postgis.net/docs/manual-2.1/using_postgis_dbmanageme
 * MULTILINESTRING ((0 0,1 1,1 2),(2 3,3 2,5 4))
 
 
-##PostGIS provides 
+## PostGIS provides 
 
 * Processing and analytic functions for both vector and raster data for splicing, dicing, morphing, reclassifying, and collecting/unioning with the power of SQL
 * raster map algebra for fine-grained raster processing
@@ -268,7 +272,8 @@ WHERE pop < 300000
 AND ST_Area(cities.the_geom) < 400000000;
 ```
 
-# 3D City Database Importer/Exporter
+#
+## 3D City Database Importer/Exporter
 
 Front-end for 3D city database
 
@@ -278,11 +283,13 @@ Allows export in KML and COLLADA for visualization
 
 Offers GUI and CLI
 
-# 3DCityDB-Overview
+# 
+## 3DCityDB-Overview
 
 ![Source: [Kunde, 2014](http://slides.com/fxku/3d-city-database#/)](./pictures/3DCityDB_System.png)
 
-# QGIS
+# 
+## QGIS
 
 Previously known as *Quantum GIS*
 
@@ -296,7 +303,8 @@ Supports many vector, raster, and database formats and functionalities
 
 Customizable via plugins (C++, Python)
 
-# 3D City Model Berlin
+# 
+## 3D City Model Berlin
 
 550.000 buildings on about 890 sqkm
 
@@ -306,9 +314,8 @@ Can be downloaded and used as part of Berlin's Open Data Initiative
 
 Berlin 3D - [Download Portal](http://www.businesslocationcenter.de/en/downloadportal)
 
-
-# Data modelling
-##
+#
+## Data modelling
 
 is **fundamental** for efficient 
 
@@ -371,9 +378,22 @@ This basically means that we shouldn't store any data that can either be derived
 * for more background and guidance 
 [code guru](http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm)
 
-# Hands-On
+#
+## Hands-On
 
-# Create Database
+Create Database
+
+Create 3D City Database
+
+Import City Model
+
+Inspect Database with pgAdmin
+
+Export building data with QGIS
+
+# 
+## Create Database
+
 Execute following statement as PostgreSQL admin:
 ```sql
 CREATE DATABASE ghg_handson
@@ -385,8 +405,9 @@ CREATE EXTENSION postgis;
 ```
 It is already done on the VM! \\o/
 
-# Create 3D City Database (3DCityDB)
-##
+#
+## Create 3D City Database (3DCityDB)
+
 The 3DCityDB is a relational database schema
 
 Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS
@@ -409,8 +430,9 @@ Setup requires user input:
 
 **urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783**
 
-# Import City Model
-##
+#
+## Import City Model
+
 Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png) 
 
 ## Connect to Database
@@ -421,21 +443,33 @@ Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png)
 
 # Play around with pgAdmin
 
-# Export data with QGIS
-##
-Open QGIS Desktop
+#
+## Export data with QGIS
 
-Add new database:
-	Click on the PostGIS logo (Elephant)
-	Select 'New'
+## Start QGIS 
+
+1. Open QGIS Desktop
+
+2. Add new database:
+	
+     1. Click on the PostGIS logo (Elephant)
+
+     2. Select 'New'
 
 ## Add New Database
+
 ![](./pictures/qgis_database.png)
 
-## Query Buildings from DB I
+
+## Query Buildings from DB 
+
+Open 'Database' > 'DB Manager' > 'DB Manager'
+
+Select database 'ghg_handson' and open 'SQL window'
+
 ![](./pictures/qgis_db2.png)
 
-## Query Buildings from DB II
+## Query Buildings from DB (cont.)
 Execute following query:
 ```sql
 WITH
@@ -460,14 +494,33 @@ SELECT row_number() OVER() As id, building_id,
 measured_height, ST_Force2d(geometry) AS footprint FROM heights;
 ```
 
-## Query Buildings from DB II
+## Query Buildings from DB (cont.)
+
+Select 'Load as new layer'
+
+'Column with unique integer values' : 'id'
+
+'Geometry column' : 'footprint'
+
+## Query Buildings from DB (cont.)
+
 ![](./pictures/qgis_db3.png)
 
 ## Buildings with Attributes
+
 ![](./pictures/qgis_db4.png)
 
+## Buildings with Attributes
+
+Example building:
+
+![](./pictures/qgis_building_attribs.png)
+
 ## Export to Shape I
-![](./pictures/qgis_db5.png)
+
+Do a right-click onto the layer:
+
+![](./pictures/qgis_save_as.png)
 
 ## Export to Shape II
 ![](./pictures/qgis_db6.png)
