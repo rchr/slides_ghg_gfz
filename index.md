@@ -250,19 +250,19 @@ A bunch of ST\_() Functions are available to work with the *geom* column
 
 * getting the CRS of the table/layer
 
-```
+```sql
 SELECT ST_SRID(geom) from catchments;
 ```
 
 * re-project a column into a different CRS 
 
-```
+```sql
 UPDATE subbasins SET geom = ST_TRANSFORM(geom, 4326);
 ```
 
 ## PostGIS - Example
 
-```
+```sql
 SELECT name, pop FROM cities 
 WHERE pop < 300000  
 AND ST_Area(cities.the_geom) < 400000000;
@@ -380,6 +380,7 @@ CREATE DATABASE ghg_handson
 WITH OWNER = ghg;
 ```
 ... and to enable PostGIS:
+
 ```sql
 CREATE EXTENSION postgis;
 ```
@@ -387,6 +388,7 @@ It is already done on the VM! \\o/
 
 # Create 3D City Database (3DCityDB)
 ##
+
 The 3DCityDB is a relational database schema
 
 Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS
@@ -394,11 +396,14 @@ Schema results from a mapping of the object-oriented data model of CityGML to th
 Schema is like a 'blueprint' of the database
 
 To create the schema with its tables execute:
+
 ```bash
 cd /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 psql ghg_handson -f CREATE_DB.sql
 ```
+
 ## 
+
 Setup requires user input:
 
 1. Spatial Reference Identifier for geometry objects (SRID):
@@ -411,18 +416,22 @@ Setup requires user input:
 
 # Import City Model
 ##
+
 Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png) 
 
 ## Connect to Database
+
 ![](./pictures/impexp_database.png)
 
 ## Do the import
+
 ![](./pictures/impexp_import.png)
 
 # Play around with pgAdmin
 
 # Export data with QGIS
 ##
+
 Open QGIS Desktop
 
 Add new database:
@@ -430,13 +439,17 @@ Add new database:
 	Select 'New'
 
 ## Add New Database
+
 ![](./pictures/qgis_database.png)
 
 ## Query Buildings from DB I
+
 ![](./pictures/qgis_db2.png)
 
 ## Query Buildings from DB II
+
 Execute following query:
+
 ```sql
 WITH
 groundSurfaces AS (
@@ -461,13 +474,17 @@ measured_height, ST_Force2d(geometry) AS footprint FROM heights;
 ```
 
 ## Query Buildings from DB II
+
 ![](./pictures/qgis_db3.png)
 
 ## Buildings with Attributes
+
 ![](./pictures/qgis_db4.png)
 
 ## Export to Shape I
+
 ![](./pictures/qgis_db5.png)
 
 ## Export to Shape II
+
 ![](./pictures/qgis_db6.png)
