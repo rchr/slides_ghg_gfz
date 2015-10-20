@@ -525,10 +525,60 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 </section>
 </section>
-<section id="play-around-with-pgadmin" class="level1">
-<h1>Play around with pgAdmin</h1>
-</section>
 <section id="section-17" class="level1">
+<h1></h1>
+<section id="play-around-with-pgadmin" class="level2">
+<h2>Play around with pgAdmin</h2>
+<p>pgAdmin provides an interface/gui to:</p>
+<ol type="1">
+<li>Administration of the DB
+<ul>
+<li>Server administration and configuration (pg_hba.conf, postgresql.conf)</li>
+<li>user and group management</li>
+<li>setup privileges (permissions what user can do and can <strong>not</strong> do</li>
+</ul></li>
+<li>Query the DB
+<ul>
+<li>Graphical query builder</li>
+<li><em>sql</em> window</li>
+</ul></li>
+</ol>
+</section>
+<section id="query-the-db" class="level2">
+<h2>Query the DB</h2>
+<p><strong>Ask for all building greater than height X</strong></p>
+<p>Open the <em>sql</em>-query window</p>
+<figure>
+<img src="./pictures/pgadmin_query_sql_window.png" alt="" />
+</figure>
+</section>
+<section id="graphical-query-builder" class="level2">
+<h2>Graphical query builder</h2>
+<ul>
+<li><p>Similar to DB connectors shipped with common Office suites (e.g. MS <em>the evil</em> Office and Libre<em>the brave</em> Office)</p></li>
+<li>allows drag and drop of required tables</li>
+<li>click selection of required columns</li>
+<li><p>interface to restrict table attributes</p></li>
+</ul>
+</section>
+<section id="graphical-query-builder-1" class="level2">
+<h2>Graphical query builder</h2>
+<figure>
+<img src="./pictures/graphic_query.png" alt="" />
+</figure>
+</section>
+<section id="sql-editor-window" class="level2">
+<h2>Sql editor window</h2>
+<ul>
+<li>is updated based on the graphical query builder</li>
+<li>can send parts of sql query (sub-queries)</li>
+</ul>
+<figure>
+<img src="./pictures/pgadmin_query.png" alt="" />
+</figure>
+</section>
+</section>
+<section id="section-18" class="level1">
 <h1></h1>
 <section id="export-data-with-qgis" class="level2">
 <h2>Export data with QGIS</h2>

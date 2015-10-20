@@ -447,7 +447,49 @@ Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png)
 
 ![](./pictures/impexp_import.png)
 
-# Play around with pgAdmin
+#
+## Play around with pgAdmin
+
+pgAdmin provides an interface/gui to:
+
+1. Administration of the DB 
+    * Server administration and configuration (pg_hba.conf, postgresql.conf)
+    * user and group management
+    * setup privileges (permissions what user can do and can **not** do
+2. Query the DB
+    * Graphical query builder 
+    * *sql* window 
+
+
+## Query the DB
+
+**Ask for all building greater than height X**
+
+Open the *sql*-query window
+
+![](./pictures/pgadmin_query_sql_window.png)
+
+## Graphical query builder 
+
+* Similar to DB connectors shipped with common Office suites
+(e.g. MS *the evil*  Office and  Libre*the brave* Office)
+
+* allows drag and drop of required tables
+* click selection of required columns
+* interface to restrict table attributes
+
+## Graphical query builder 
+
+![](./pictures/graphic_query.png)
+
+
+## Sql editor window
+
+* is updated based on the graphical query builder
+* can send parts of sql query (sub-queries)
+
+![](./pictures/pgadmin_query.png)
+
 
 #
 ## Export data with QGIS
