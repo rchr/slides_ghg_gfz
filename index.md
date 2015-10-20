@@ -147,19 +147,19 @@ while the frontend application may run anywhere.
 
 * create database
 
-```
+```sql
 CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
 ```
 
 * save data
 
-```
+```sql
 INSERT INTO mesuremetns VALUES('2014-09-01', 10.456);
 ```
 
 * edit data
 
-```
+```sql
 UPDATE measurements SET value = value + 1;
 ```
 
@@ -167,19 +167,19 @@ UPDATE measurements SET value = value + 1;
 
 * query data
 
-```
+```sql
 SELECT value FROM measurements;
 ```
 
 * comparison
 
-```
+```sql
 SELECT value FROM measurements WHERE date > '2013-01-01';
 ```
 
 * summary and computations
 
-```
+```sql
 SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'
 ```
 
@@ -254,19 +254,19 @@ A bunch of ST\_() Functions are available to work with the *geom* column
 
 * getting the CRS of the table/layer
 
-```
+```sql
 SELECT ST_SRID(geom) from catchments;
 ```
 
 * re-project a column into a different CRS 
 
-```
+```sql
 UPDATE subbasins SET geom = ST_TRANSFORM(geom, 4326);
 ```
 
 ## PostGIS - Example
 
-```
+```sql
 SELECT name, pop FROM cities 
 WHERE pop < 300000  
 AND ST_Area(cities.the_geom) < 400000000;
@@ -400,6 +400,7 @@ CREATE DATABASE ghg_handson
 WITH OWNER = ghg;
 ```
 ... and to enable PostGIS:
+
 ```sql
 CREATE EXTENSION postgis;
 ```
@@ -415,11 +416,14 @@ Schema results from a mapping of the object-oriented data model of CityGML to th
 Schema is like a 'blueprint' of the database
 
 To create the schema with its tables execute:
+
 ```bash
 cd /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 psql ghg_handson -f CREATE_DB.sql
 ```
+
 ## 
+
 Setup requires user input:
 
 1. Spatial Reference Identifier for geometry objects (SRID):
@@ -436,9 +440,11 @@ Setup requires user input:
 Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png) 
 
 ## Connect to Database
+
 ![](./pictures/impexp_database.png)
 
 ## Do the import
+
 ![](./pictures/impexp_import.png)
 
 # Play around with pgAdmin
@@ -471,6 +477,7 @@ Select database 'ghg_handson' and open 'SQL window'
 
 ## Query Buildings from DB (cont.)
 Execute following query:
+
 ```sql
 WITH
 groundSurfaces AS (
@@ -517,6 +524,7 @@ Example building:
 ![](./pictures/qgis_building_attribs.png)
 
 ## Export to Shape I
+![](./pictures/qgis_db5.png)
 
 Do a right-click onto the layer:
 
