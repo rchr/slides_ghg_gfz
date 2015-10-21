@@ -79,12 +79,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <section id="section" class="level1">
 <h1></h1>
-<section id="working-with-citygml" class="level2">
-<h2>Working with CityGML</h2>
-</section>
-</section>
-<section id="section-1" class="level1">
-<h1></h1>
 <section id="citygml-recap" class="level2">
 <h2>CityGML Recap</h2>
 <ul>
@@ -102,7 +96,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>CityGML datasets may become very large --&gt; Use database to work with!</p>
 </section>
 </section>
-<section id="section-2" class="level1">
+<section id="section-1" class="level1">
 <h1></h1>
 <section id="need-for-database-some-examples" class="level2">
 <h2>Need for Database? Some Examples!</h2>
@@ -116,14 +110,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 </section>
 </section>
-<section id="section-3" class="level1">
+<section id="section-2" class="level1">
 <h1></h1>
 <section id="databases" class="level2">
 <h2>Databases</h2>
 <ul>
-<li>Data bases are collections of tables (2D with columns and rows)</li>
-<li>Very good for combining information from several tables</li>
-<li>E.g.</li>
+<li><p>Data bases are collections of tables (2D with columns and rows)</p></li>
+<li><p>Very good for combining information from several tables</p></li>
+<li><p>E.g., select all buildings located in Berlin</p></li>
 </ul>
 <table>
 <caption>Table <em>City</em></caption>
@@ -176,30 +170,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </table>
 </section>
 </section>
-<section id="section-4" class="level1">
+<section id="section-3" class="level1">
 <h1></h1>
 <section id="agenda" class="level2">
 <h2>Agenda</h2>
 <ul>
-<li>3D City Database</li>
+<li>3D City Database (3DCityDB)</li>
 <li>3D City Database Importer/Exporter</li>
 <li>QGIS</li>
 </ul>
 </section>
 </section>
-<section id="section-5" class="level1">
+<section id="section-4" class="level1">
 <h1></h1>
-<section id="dcitydb-overview" class="level2">
-<h2>3DCityDB-Overview</h2>
+<section id="dcitydb---overview" class="level2">
+<h2>3DCityDB - Overview</h2>
 <figure>
 <img src="./pictures/3DCityDB_System.png" alt="Source: Kunde, 2014" /><figcaption>Source: <a href="http://slides.com/fxku/3d-city-database#/">Kunde, 2014</a></figcaption>
 </figure>
 </section>
 </section>
-<section id="section-6" class="level1">
+<section id="section-5" class="level1">
 <h1></h1>
-<section id="dcitydb-details" class="level2">
-<h2>3DCityDB-Details</h2>
+<section id="dcitydb---details" class="level2">
+<h2>3DCityDB - Details</h2>
 <p>Free 3D geo database</p>
 <p>Enables to store, represent, and manage virtual 3D city models</p>
 <p>Realized as relational database schema for:</p>
@@ -207,6 +201,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><strong>PostgreSQL/PostGIS</strong></li>
 <li>Oracle Spatial</li>
 </ul>
+</section>
+</section>
+<section id="section-6" class="level1">
+<h1></h1>
+<section id="dcitydb---building-schema" class="level2">
+<h2>3DCityDB - Building Schema</h2>
+<p>Subset of the building schema</p>
+<figure>
+<img src="./pictures/building_schema_small.png" alt="Source: 3DCityDB v3.0.0 Documentation" /><figcaption>Source: 3DCityDB v3.0.0 Documentation</figcaption>
+</figure>
 </section>
 </section>
 <section id="section-7" class="level1">
@@ -222,19 +226,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>pgAdmin as GUI for administration</p></li>
 </ul>
 </section>
-<section id="postgresql-and-postgis" class="level2">
-<h2>PostgreSQL and PostGIS</h2>
+<section id="postgresql-1" class="level2">
+<h2>PostgreSQL</h2>
 <figure>
-<img src="./pictures/icon_postgresql.png" alt="icon" /><figcaption>icon</figcaption>
+<img src="./pictures/icon_postgresql.png" alt="" />
 </figure>
 <ul>
-<li>PostgreSQL is a powerful, <em>open source</em> object-relational database system</li>
-<li>&gt; 15 years of active development and a proven architecture</li>
-<li>runs on all major operating systems, including Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64), and Windows</li>
-<li>It includes most SQL:2008 data types, including INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVAL, and TIMESTAMP</li>
-<li>It also supports storage of binary large objects, including pictures, sounds, or video</li>
-<li>diverse native programming interfaces (C/C++, Java, .Net, Perl, Python, ... )</li>
-<li>comprehensive documentation</li>
+<li><p>Includes most SQL:2008 data types, including INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVAL, and TIMESTAMP</p></li>
+<li><p>Supports storage of binary large objects, including pictures, sounds, or video</p></li>
+<li><p>Diverse native programming interfaces (C/C++, Java, .Net, Perl, Python, ... )</p></li>
 </ul>
 </section>
 <section id="key-features" class="level2">
@@ -303,54 +303,46 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="sql" class="level2">
 <h2>SQL</h2>
 <ul>
-<li>Structured Query Language</li>
-<li>... is a computer language to save, edit and query data in relational data bases</li>
-<li>first version in 1974 (IBM)</li>
-<li>SQL became a standard of the American National Standards Institute (ANSI) in 1986</li>
-<li>revised in 1999: SQL99 or SQL3</li>
+<li><strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage</li>
+<li>Language to save, edit and query data in relational data bases</li>
+<li>First version in 1974 (IBM)</li>
+<li>Became a standard of the American National Standards Institute (ANSI) in 1986</li>
+<li>Revised in 1999: SQL99 or SQL3</li>
 <li>SQL has standards but also some pecularities depending on the database management system</li>
-<li>'Talk' to the database server</li>
-<li>used as front end for postgresql</li>
-<li>case sensitive (usually upper case for keywords)</li>
+<li>Used to 'talk' to the database server</li>
+<li>Used as front end for postgresql</li>
+<li>Case sensitive (usually upper case for keywords)</li>
 </ul>
 </section>
 <section id="ways-to-use-sql" class="level2">
-<h2>ways to use SQL</h2>
+<h2>Ways to use SQL</h2>
 <ul>
-<li><p>console command (psql -h hostaddress -U db_name)</p></li>
+<li><p>Console command (psql -h hostaddress -U db_name)</p></li>
 <li><p>GUI (pgadmin)</p></li>
-<li><p>interfaces to programming languages (R, python, PHP, etc.)</p></li>
+<li><p>Interfaces to programming languages (R, python, Java, etc.)</p></li>
 </ul>
 </section>
-<section id="sql-syntax-i" class="level2">
-<h2>SQL syntax-I</h2>
+<section id="sql-syntax---i" class="level2">
+<h2>SQL Syntax - I</h2>
 <ul>
-<li>create database</li>
+<li><p>Create Database</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> measurements(<span class="kw">id</span> BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">DEFAULT</span>, <span class="dt">date</span> <span class="dt">TIMESTAMP</span> <span class="kw">WITH</span> <span class="dt">TIME</span> <span class="dt">ZONE</span>, <span class="fu">value</span> <span class="dt">DOUBLE</span> <span class="dt">PRECISION</span>);</code></pre></div></li>
+<li><p>Insert Data</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">INSERT</span> <span class="kw">INTO</span> mesuremetns <span class="kw">VALUES</span>(<span class="st">&#39;2014-09-01&#39;</span>, <span class="fl">10.456</span>);</code></pre></div></li>
+<li><p>Edit Data</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> measurements <span class="kw">SET</span> <span class="fu">value</span> = <span class="fu">value</span> + <span class="dv">1</span>;</code></pre></div></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> measurements(<span class="kw">id</span> BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">DEFAULT</span>, <span class="dt">date</span> <span class="dt">TIMESTAMP</span> <span class="kw">WITH</span> <span class="dt">TIME</span> <span class="dt">ZONE</span>, <span class="fu">value</span> <span class="dt">DOUBLE</span> <span class="dt">PRECISION</span>);</code></pre></div>
-<ul>
-<li>save data</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">INSERT</span> <span class="kw">INTO</span> mesuremetns <span class="kw">VALUES</span>(<span class="st">&#39;2014-09-01&#39;</span>, <span class="fl">10.456</span>);</code></pre></div>
-<ul>
-<li>edit data</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> measurements <span class="kw">SET</span> <span class="fu">value</span> = <span class="fu">value</span> + <span class="dv">1</span>;</code></pre></div>
 </section>
-<section id="sql-syntax-ii" class="level2">
-<h2>SQL syntax-II</h2>
+<section id="sql-syntax---ii" class="level2">
+<h2>SQL syntax - II</h2>
 <ul>
-<li>query data</li>
+<li><p>Query Data</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements;</code></pre></div></li>
+<li><p>Comparison/Filter</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span>;</code></pre></div></li>
+<li><p>Summary and Computations</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="fu">value</span>) <span class="kw">AS</span> max_val <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span></code></pre></div></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements;</code></pre></div>
-<ul>
-<li>comparison</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span>;</code></pre></div>
-<ul>
-<li>summary and computations</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="fu">value</span>) <span class="kw">AS</span> max_val <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span></code></pre></div>
 </section>
 </section>
 <section id="section-9" class="level1">
@@ -447,7 +439,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </section>
 <section id="section-11" class="level1">
 <h1></h1>
-<section id="dcitydb-overview-1" class="level2">
+<section id="dcitydb-overview" class="level2">
 <h2>3DCityDB-Overview</h2>
 <figure>
 <img src="./pictures/3DCityDB_System.png" alt="Source: Kunde, 2014" /><figcaption>Source: <a href="http://slides.com/fxku/3d-city-database#/">Kunde, 2014</a></figcaption>
@@ -670,6 +662,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <img src="./pictures/qgis_database.png" alt="" />
 </figure>
 </section>
+<section id="connect-to-database-1" class="level2">
+<h2>Connect to Database</h2>
+<figure>
+<img src="./pictures/qgis_db_7.png" alt="" />
+</figure>
+</section>
 <section id="query-buildings-from-db" class="level2">
 <h2>Query Buildings from DB</h2>
 <p>Open 'Database' &gt; 'DB Manager' &gt; 'DB Manager'</p>
@@ -701,6 +699,8 @@ heights <span class="kw">AS</span> (
 )
 <span class="kw">SELECT</span> <span class="fu">row_number</span>() <span class="kw">OVER</span>() <span class="kw">As</span> <span class="kw">id</span>, building_id, 
 measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span class="kw">FROM</span> heights;</code></pre></div>
+<p>Query stored in file:</p>
+<p><em>/home/ghg/Desktop/ghg_flux_ws/city_gml/hands-on/select_footprint_height.sql</em></p>
 </section>
 <section id="query-buildings-from-db-cont.-1" class="level2">
 <h2>Query Buildings from DB (cont.)</h2>

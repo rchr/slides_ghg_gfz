@@ -4,9 +4,6 @@
 % 22. - 23. November 2015
 
 #
-## Working with CityGML
-
-#
 ## CityGML Recap 
 
 * Application independent geospatial information model
@@ -40,8 +37,10 @@ CityGML datasets may become very large --&gt; Use database to work with!
 ## Databases
 
 * Data bases are collections of tables (2D with columns and rows)
+
 * Very good for combining information from several tables
-* E.g.
+
+* E.g., select all buildings located in Berlin
  
 ID   Name 	    Population
 ---- ----------	--------------
@@ -61,18 +60,17 @@ Table: Table *Building*
 # 
 ## Agenda
 
-- 3D City Database
-- 3D City Database Importer/Exporter
-- QGIS
+* 3D City Database (3DCityDB)
+* 3D City Database Importer/Exporter
+* QGIS
 
 # 
-## 3DCityDB-Overview
+## 3DCityDB - Overview
 
 ![Source: [Kunde, 2014](http://slides.com/fxku/3d-city-database#/)](./pictures/3DCityDB_System.png)
 
-
 #
-## 3DCityDB-Details
+## 3DCityDB - Details
 
 Free 3D geo database
 
@@ -82,6 +80,13 @@ Realized as relational database schema for:
 
 - **PostgreSQL/PostGIS**
 - Oracle Spatial
+
+#
+## 3DCityDB - Building Schema
+
+Subset of the building schema
+
+![Source: 3DCityDB v3.0.0 Documentation](./pictures/building_schema_small.png)
 
 #
 ## PostgreSQL
@@ -100,20 +105,18 @@ Realized as relational database schema for:
 
 * pgAdmin as GUI for administration
 
-## PostgreSQL and PostGIS
+## PostgreSQL
 
-![icon](./pictures/icon_postgresql.png)
+![](./pictures/icon_postgresql.png)
 
-* PostgreSQL is a powerful, _open source_ object-relational database system
-* \> 15 years of active development and a proven architecture 
-* runs on all major operating systems, including Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64), and Windows
-* It includes most SQL:2008 data types, including INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVAL, and TIMESTAMP
-* It also supports storage of binary large objects, including pictures, sounds, or video
-* diverse native programming interfaces (C/C++, Java, .Net, Perl, Python, ... )
-* comprehensive documentation
+* Includes most SQL:2008 data types, including INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVAL, and TIMESTAMP
+
+* Supports storage of binary large objects, including pictures, sounds, or video
+
+* Diverse native programming interfaces (C/C++, Java, .Net, Perl, Python, ... )
+
 
 ## Key features
-
 
 ---------------------------------------------------------------
 Limit                              Value
@@ -149,62 +152,56 @@ while the frontend application may run anywhere.
 
 ![client server](./pictures/client_server.png)
 
-## SQL
+## SQL 
 
-* Structured Query Language
-* ... is a computer language to save, edit and query data in relational data bases
-* first version in 1974 (IBM) 
-* SQL became a standard of the American National Standards Institute (ANSI) in 1986
-* revised in 1999: SQL99 or SQL3
+* **S**tructured **Q**uery **L**anguage
+* Language to save, edit and query data in relational data bases
+* First version in 1974 (IBM) 
+* Became a standard of the American National Standards Institute (ANSI) in 1986
+* Revised in 1999: SQL99 or SQL3
 * SQL has standards but also some pecularities depending on the database management system
-* 'Talk' to the database server
-* used as front end for postgresql
-* case sensitive (usually upper case for keywords)
+* Used to 'talk' to the database server
+* Used as front end for postgresql
+* Case sensitive (usually upper case for keywords)
 
-## ways to use SQL
+## Ways to use SQL
 
-* console command (psql -h hostaddress -U  db_name)
+* Console command (psql -h hostaddress -U  db_name)
 
 * GUI (pgadmin)
 
-* interfaces to programming languages (R, python, PHP, etc.)
+* Interfaces to programming languages (R, python, Java, etc.)
 
-## SQL syntax-I
+## SQL Syntax - I
 
-* create database
-
+* Create Database
 ```sql
 CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
 ```
 
-* save data
-
+* Insert Data
 ```sql
 INSERT INTO mesuremetns VALUES('2014-09-01', 10.456);
 ```
 
-* edit data
-
+* Edit Data
 ```sql
 UPDATE measurements SET value = value + 1;
 ```
 
-## SQL syntax-II
+## SQL syntax - II
 
-* query data
-
+* Query Data
 ```sql
 SELECT value FROM measurements;
 ```
 
-* comparison
-
+* Comparison/Filter
 ```sql
 SELECT value FROM measurements WHERE date > '2013-01-01';
 ```
 
-* summary and computations
-
+* Summary and Computations
 ```sql
 SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'
 ```
@@ -534,6 +531,9 @@ Open the *sql*-query window
 
 ![](./pictures/qgis_database.png)
 
+## Connect to Database
+
+![](./pictures/qgis_db_7.png)
 
 ## Query Buildings from DB 
 
@@ -568,6 +568,10 @@ heights AS (
 SELECT row_number() OVER() As id, building_id, 
 measured_height, ST_Force2d(geometry) AS footprint FROM heights;
 ```
+
+Query stored in file: 
+
+*/home/ghg/Desktop/ghg_flux_ws/city_gml/hands-on/select_footprint_height.sql*
 
 ## Query Buildings from DB (cont.)
 
