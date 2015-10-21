@@ -1,36 +1,62 @@
-% CityGML - Applications, Open Data and Open Source Tools
+% CityGML \
+  Applications, Open Data and Open Source Tools
 % Richard Redweik & Stefan Lüdtke
 % 22. - 23. November 2015
 
 #
 ## Working with CityGML
 
-## Recap 
+#
+## CityGML Recap 
 
-Application independent geospatial information model
+* Application independent geospatial information model
 
-Different thematic areas (buildings, water, vegetation, bridges etc.)
-International OGC standard
-**Data model (UML)** and **exchange format** (based on GML3)
-CityGML represents
+* International OGC standard
 
-- 3D geometrey, 3D topology, semantics, and appearance
-- in 5 discrete scales (levels of detail, LOD)
+* Different thematic areas (buildings, water, vegetation, bridges etc.)
+
+* CityGML represents
+
+	* 3D geometrey, 3D topology, semantics, and appearance
+	* in 5 discrete scales (levels of detail, LOD)
+
+* **Data model (UML)** and **exchange format** (based on GML3)
 
 **However!**
 
 CityGML datasets may become very large --&gt; Use database to work with!
 
-## Need for database? some examples
+#
+## Need for Database? Some Examples!
 
-* multiple simultaneous changes to data (concurrency)
-* data changes on a regular basis
-* large data sets where you only need some observations/ variables
-* share huge data set among many people (data consistency in a working groug!)
-* rapid queries
-* web interfaces to data, especially dynamic data
-* data bases are collections of tables (2d with columns and rows)
-* very good for combining information from several tables
+* Multiple simultaneous changes to data (concurrency)
+* Data changes on a regular basis
+* Large data sets where you only need some observations/ variables
+* Share huge data set among many people (data consistency in a working group!)
+* Rapid queries
+* Web interfaces to data, especially dynamic data
+
+#
+## Databases
+
+* Data bases are collections of tables (2D with columns and rows)
+* Very good for combining information from several tables
+* E.g.
+ 
+ID   Name 	    Population
+---- ----------	--------------
+1    Berlin 	       3502000
+2    Potsdam	        159456
+
+Table: Table *City*
+
+ID 	    City 	    Height	
+----	--------	----------
+1	       1	      10.0
+2	       1	      22.2
+3	       2 	      15.0
+
+Table: Table *Building*
 
 # 
 ## Agenda
