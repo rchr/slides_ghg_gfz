@@ -34,10 +34,15 @@ CityGML datasets may become very large --&gt; Use database to work with!
 ## Need for Database? Some Examples!
 
 * Multiple simultaneous changes to data (concurrency)
+
 * Data changes on a regular basis
+
 * Large data sets where you only need some observations/ variables
+
 * Share huge data set among many people (data consistency in a working group!)
+
 * Rapid queries
+
 * Web interfaces to data, especially dynamic data
 
 #
@@ -65,11 +70,13 @@ ID 	    City 	    Height
 Table: Table *Building*
 
 # 
-## Agenda
+## Used Tools 
 
 * 3D City Database (3DCityDB)
 
 * 3D City Database Importer/Exporter
+
+* pgAdmin
 
 * QGIS
 
@@ -498,6 +505,11 @@ Architecture
 ## Outlook LoCaL
 Information View
 ![](./pictures/local_building.png)
+
+#
+## Questions?
+
+Focus for tomorrow?
 
 #
 ## Friday!
