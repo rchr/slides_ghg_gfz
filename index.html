@@ -79,6 +79,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <section id="section" class="level1">
 <h1></h1>
+<section id="agenda" class="level2">
+<h2>Agenda</h2>
+<ul>
+<li><p>Thursday: General introduction into tools and workflows</p></li>
+<li><p>Friday: Practical hands-on session</p></li>
+</ul>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
 <section id="citygml-recap" class="level2">
 <h2>CityGML Recap</h2>
 <ul>
@@ -96,7 +106,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>CityGML datasets may become very large --&gt; Use database to work with!</p>
 </section>
 </section>
-<section id="section-1" class="level1">
+<section id="section-2" class="level1">
 <h1></h1>
 <section id="need-for-database-some-examples" class="level2">
 <h2>Need for Database? Some Examples!</h2>
@@ -110,7 +120,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 </section>
 </section>
-<section id="section-2" class="level1">
+<section id="section-3" class="level1">
 <h1></h1>
 <section id="databases" class="level2">
 <h2>Databases</h2>
@@ -170,18 +180,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </table>
 </section>
 </section>
-<section id="section-3" class="level1">
+<section id="section-4" class="level1">
 <h1></h1>
-<section id="agenda" class="level2">
+<section id="agenda-1" class="level2">
 <h2>Agenda</h2>
 <ul>
-<li>3D City Database (3DCityDB)</li>
-<li>3D City Database Importer/Exporter</li>
-<li>QGIS</li>
+<li><p>3D City Database (3DCityDB)</p></li>
+<li><p>3D City Database Importer/Exporter</p></li>
+<li><p>QGIS</p></li>
 </ul>
 </section>
 </section>
-<section id="section-4" class="level1">
+<section id="section-5" class="level1">
 <h1></h1>
 <section id="dcitydb---overview" class="level2">
 <h2>3DCityDB - Overview</h2>
@@ -190,7 +200,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 </section>
 </section>
-<section id="section-5" class="level1">
+<section id="section-6" class="level1">
 <h1></h1>
 <section id="dcitydb---details" class="level2">
 <h2>3DCityDB - Details</h2>
@@ -203,7 +213,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 </section>
 </section>
-<section id="section-6" class="level1">
+<section id="section-7" class="level1">
+<h1></h1>
+<section id="dont-be-afraid" class="level2">
+<h2>Don't be afraid!</h2>
+<ul>
+<li><p>May appear complex in the beginning (60 tables)</p></li>
+<li><p>But!</p>
+<ul>
+<li><p>Tables are strucuted logically</p></li>
+<li><p>You probably do not use all tables</p></li>
+</ul></li>
+</ul>
+<p>--&gt; 3DCityDB not as complex as it seems!</p>
+</section>
+</section>
+<section id="section-8" class="level1">
 <h1></h1>
 <section id="dcitydb---building-schema" class="level2">
 <h2>3DCityDB - Building Schema</h2>
@@ -213,7 +238,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 </section>
 </section>
-<section id="section-7" class="level1">
+<section id="section-9" class="level1">
 <h1></h1>
 <section id="postgresql" class="level2">
 <h2>PostgreSQL</h2>
@@ -284,18 +309,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </section>
 <section id="architecture" class="level2">
 <h2>Architecture</h2>
-<ul>
-<li>The library (frontend) sends user requests over the network to the postmaster.</li>
-<li>Postmaster starts a new backend server process and connects the frontend process to the new server.</li>
-<li>Frontend process and the backend server communicate without intervention by the postmaster.</li>
-<li>the postmaster and the backend always run on the same machine (the database server), while the frontend application may run anywhere.</li>
-<li>data base server can contain many databases</li>
-<li>PostgreSQL uses a message-based protocol for communication between frontends and backends (clients and servers)</li>
-<li>The protocol is supported over TCP/IP</li>
-</ul>
-</section>
-<section id="section-8" class="level2">
-<h2></h2>
 <figure>
 <img src="./pictures/client_server.png" alt="client server" /><figcaption>client server</figcaption>
 </figure>
@@ -326,108 +339,133 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>SQL Syntax - I</h2>
 <ul>
 <li><p>Create Database</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> measurements(<span class="kw">id</span> BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">DEFAULT</span>, <span class="dt">date</span> <span class="dt">TIMESTAMP</span> <span class="kw">WITH</span> <span class="dt">TIME</span> <span class="dt">ZONE</span>, <span class="fu">value</span> <span class="dt">DOUBLE</span> <span class="dt">PRECISION</span>);</code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> measurements (<span class="kw">id</span> BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">DEFAULT</span>, <span class="dt">date</span> <span class="dt">TIMESTAMP</span> <span class="kw">WITH</span> <span class="dt">TIME</span> <span class="dt">ZONE</span>, <span class="fu">value</span> <span class="dt">DOUBLE</span> <span class="dt">PRECISION</span>);</code></pre></div></li>
 <li><p>Insert Data</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">INSERT</span> <span class="kw">INTO</span> mesuremetns <span class="kw">VALUES</span>(<span class="st">&#39;2014-09-01&#39;</span>, <span class="fl">10.456</span>);</code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">INSERT</span> <span class="kw">INTO</span> mesurements 
+<span class="kw">VALUES</span>(<span class="st">&#39;2014-09-01&#39;</span>, <span class="fl">10.456</span>);</code></pre></div></li>
 <li><p>Edit Data</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> measurements <span class="kw">SET</span> <span class="fu">value</span> = <span class="fu">value</span> + <span class="dv">1</span>;</code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> measurements 
+<span class="kw">SET</span> <span class="fu">value</span> = <span class="fu">value</span> + <span class="dv">1</span>;</code></pre></div></li>
 </ul>
 </section>
 <section id="sql-syntax---ii" class="level2">
 <h2>SQL syntax - II</h2>
 <ul>
 <li><p>Query Data</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements;</code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> 
+<span class="kw">FROM</span> measurements;</code></pre></div></li>
 <li><p>Comparison/Filter</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span>;</code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">value</span> 
+<span class="kw">FROM</span> measurements 
+<span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span>;</code></pre></div></li>
 <li><p>Summary and Computations</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="fu">value</span>) <span class="kw">AS</span> max_val <span class="kw">FROM</span> measurements <span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span></code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="fu">value</span>) <span class="kw">AS</span> max_val 
+<span class="kw">FROM</span> measurements 
+<span class="kw">WHERE</span> <span class="dt">date</span> &gt; <span class="st">&#39;2013-01-01&#39;</span></code></pre></div></li>
 </ul>
 </section>
 </section>
-<section id="section-9" class="level1">
+<section id="section-10" class="level1">
 <h1></h1>
 <section id="postgis" class="level2">
 <h2>PostGIS</h2>
 <ul>
 <li><p>Spatial extension for PostgreSQL</p></li>
 <li><p>Support for spatial objects (geometry, geography, raster)</p></li>
-<li><p>Spatial functions</p></li>
+<li>Spatial functions
+<ul>
+<li>E.g. <code>ST_Intersects(geomA, geomB)</code></li>
+</ul></li>
 <li><p>Multi-dimensional spatial indexing</p></li>
 </ul>
 </section>
-<section id="additional-data-type-for-a-geometry" class="level2">
-<h2>Additional data type for a geometry</h2>
-<p>The geometry is stored in a extra column, usually termed <em>geom</em> or <em>the_geom</em>, all based the following <a href="http://postgis.net/docs/manual-2.1/using_postgis_dbmanagement.html">link</a></p>
+<section id="additional-data-type-for-geometry" class="level2">
+<h2>Additional Data Type for Geometry</h2>
 <ul>
-<li>uses Well-Known Binary (WKB) and Well-Known Text (WKT) Representations defined by <em>OGC</em></li>
-<li>POINT (0 0)</li>
-<li>LINESTRING (0 0,1 1,1 2)</li>
-<li>POLYGON ((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))</li>
+<li><p>The geometry is stored in a extra column, usually termed <em>geom</em> or <em>the_geom</em>, all based the following <a href="http://postgis.net/docs/manual-2.1/using_postgis_dbmanagement.html">link</a></p></li>
+<li><p>Uses Well-Known Binary (WKB) and Well-Known Text (WKT) Representations defined by <em>OGC</em></p></li>
+<li>Example WKB:
+<ul>
+<li>POINT (10 10)</li>
+<li>LINESTRING (10 10,20 20,30 40)</li>
+<li>POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))</li>
 <li>MULTIPOINT ((0 0),(1 2))</li>
 <li>MULTILINESTRING ((0 0,1 1,1 2),(2 3,3 2,5 4))</li>
+</ul></li>
 </ul>
 </section>
 <section id="postgis-provides" class="level2">
 <h2>PostGIS provides</h2>
 <ul>
-<li>Processing and analytic functions for both vector and raster data for splicing, dicing, morphing, reclassifying, and collecting/unioning with the power of SQL</li>
-<li>raster map algebra for fine-grained raster processing</li>
-<li>Spatial reprojection SQL callable functions for both vector and raster data</li>
-<li>Support for importing / exporting ESRI shapefile vector data via both commandline and GUI packaged tools and support for more formats via other 3rd-party Open Source tools</li>
-<li>Packaged command-line for importing raster data from many standard formats: GeoTiff, NetCDF, PNG, JPG to name a few</li>
-<li>Rendering and importing vector data support functions for standard textual formats such as KML,GML, GeoJSON,GeoHash and WKT using SQL</li>
-<li>Rendering raster data in various standard formats GeoTIFF, PNG, JPG, NetCDF, to name a few using SQL</li>
-<li>Seamless raster/vector SQL callable functions for extrusion of pixel values by geometric region, running stats by region, clipping rasters by a geometry, and vectorizing rasters</li>
-<li>3D object support, spatial index, and functions</li>
-<li>Network Topology support</li>
+<li><p>Processing and analytic functions for both vector and raster data (e.g. splicing, dicing, morphing, reclassifying, and unioning)</p></li>
+<li><p>Raster map algebra</p></li>
+<li><p>Functions for spatial reprojection</p></li>
+<li><p>Support for ESRI shapefile vector data (+ more formats via 3rd-party tools)</p></li>
+<li>Importing data from many standard formats
+<ul>
+<li>Raster data (GeoTiff, NetCDF, PNG, JPG, ...)</li>
+<li>Vector data (KML,GML, GeoJSON, GeoHash and WKT)</li>
+</ul></li>
 </ul>
 </section>
-<section id="postgis-functions" class="level2">
-<h2>PostGIS functions</h2>
-<p><strong>the PostGIS extension offers <em>full</em> GIS functionality ...</strong></p>
+<section id="postgis-provides-cont." class="level2">
+<h2>PostGIS provides (cont.)</h2>
+<ul>
+<li><p>Rendering raster data in various standard formats GeoTIFF, PNG, JPG, NetCDF, ...</p></li>
+<li><p>Seamless raster/vector functions for extrusion of pixel values by geometric region, running stats by region, clipping rasters by a geometry, and vectorizing rasters</p></li>
+<li><p>3D object support, spatial index, and functions</p></li>
+<li><p>Network topology</p></li>
+</ul>
+</section>
+<section id="postgis-as-a-gis" class="level2">
+<h2>PostGIS as a GIS</h2>
+<ul>
+<li><strong>PostGIS offers <em>full</em> GIS functionality ...</strong>
 <ul>
 <li>reprojection</li>
 <li>area calculations</li>
 <li>intersect, union, merge ...</li>
-</ul>
-<p><br />
-<br />
-</p>
-<p><strong>... among all data-types</strong></p>
+</ul></li>
+<li><strong>... among all data-types</strong>
 <ul>
 <li>all vector types supported (point, line, area ...)</li>
 <li>raster layers supported as well</li>
-</ul>
-<p><br />
-<br />
-</p>
-<p><strong>and standard interfaces for visualization</strong></p>
+</ul></li>
+<li><strong>and standard interfaces for visualization</strong>
 <ul>
 <li>QGIS, GRASS spatial layers from a Postgres DB out of the box</li>
 <li>ArcMap is supposed to do so as well</li>
+</ul></li>
 </ul>
 </section>
-<section id="st_-functions" class="level2">
-<h2>ST_() Functions</h2>
-<p>A bunch of ST_() Functions are available to work with the <em>geom</em> column</p>
+<section id="postgis-functions" class="level2">
+<h2>PostGIS Functions</h2>
 <ul>
-<li>getting the CRS of the table/layer</li>
+<li>'<code>ST_</code>' prefix (Convention for spatial type)</li>
+<li><p>Functions to work with the <em>geom</em> column</p></li>
+<li><p>Getting the CRS of the table/layer</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> ST_SRID(geom)
+<span class="kw">FROM</span> catchments;</code></pre></div></li>
+<li><p>Re-project geometry into a different CRS</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> subbasins 
+<span class="kw">SET</span> geom = ST_TRANSFORM(geom, <span class="dv">4326</span>);</code></pre></div></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> ST_SRID(geom) <span class="kw">from</span> catchments;</code></pre></div>
-<ul>
-<li>re-project a column into a different CRS</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">UPDATE</span> subbasins <span class="kw">SET</span> geom = ST_TRANSFORM(geom, <span class="dv">4326</span>);</code></pre></div>
 </section>
 <section id="postgis---example" class="level2">
 <h2>PostGIS - Example</h2>
+<ul>
+<li><p>Select cities with certain area and population</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> name, pop <span class="kw">FROM</span> cities 
 <span class="kw">WHERE</span> pop &lt; <span class="dv">300000</span>  
-<span class="kw">AND</span> ST_Area(cities.the_geom) &lt; <span class="dv">400000000</span>;</code></pre></div>
+<span class="kw">AND</span> ST_Area(cities.the_geom) &lt; <span class="dv">400000000</span>;</code></pre></div></li>
+<li><p>Select houses located in the suburbs</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> houses.*
+<span class="kw">FROM</span> houses, suburbs
+<span class="kw">WHERE</span> ST_Intersects(houses.geom, suburbs.geom);</code></pre></div></li>
+</ul>
 </section>
 </section>
-<section id="section-10" class="level1">
+<section id="section-11" class="level1">
 <h1></h1>
 <section id="d-city-database-importerexporter" class="level2">
 <h2>3D City Database Importer/Exporter</h2>
@@ -437,7 +475,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Offers GUI and CLI</p>
 </section>
 </section>
-<section id="section-11" class="level1">
+<section id="section-12" class="level1">
 <h1></h1>
 <section id="dcitydb-overview" class="level2">
 <h2>3DCityDB-Overview</h2>
@@ -446,7 +484,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 </section>
 </section>
-<section id="section-12" class="level1">
+<section id="section-13" class="level1">
 <h1></h1>
 <section id="qgis" class="level2">
 <h2>QGIS</h2>
@@ -458,7 +496,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Customizable via plugins (C++, Python)</p>
 </section>
 </section>
-<section id="section-13" class="level1">
+<section id="section-14" class="level1">
 <h1></h1>
 <section id="d-city-model-berlin" class="level2">
 <h2>3D City Model Berlin</h2>
@@ -468,7 +506,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Berlin 3D - <a href="http://www.businesslocationcenter.de/en/downloadportal">Download Portal</a></p>
 </section>
 </section>
-<section id="section-14" class="level1">
+<section id="section-15" class="level1">
 <h1></h1>
 <section id="data-modelling" class="level2">
 <h2>Data modelling</h2>
@@ -521,7 +559,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
  * for more background and guidance <a href="http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm">code guru</a></p>
 </section>
 </section>
-<section id="section-15" class="level1">
+<section id="section-16" class="level1">
 <h1></h1>
 <section id="hands-on" class="level2">
 <h2>Hands-On</h2>
@@ -532,7 +570,84 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Export building data with QGIS</p>
 </section>
 </section>
-<section id="section-16" class="level1">
+<section id="section-17" class="level1">
+<h1></h1>
+<section id="thursday" class="level2">
+<h2>Thursday!</h2>
+</section>
+</section>
+<section id="section-18" class="level1">
+<h1></h1>
+<section id="export-building-data-with-qgis---i" class="level2">
+<h2>Export building data with QGIS - I</h2>
+<p>Query:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">WITH</span>
+groundSurfaces <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> thematic_surface.* 
+    <span class="kw">FROM</span> citydb.thematic_surface <span class="kw">INNER</span> <span class="kw">JOIN</span> citydb.objectclass 
+    <span class="kw">ON</span> objectclass.id = thematic_surface.objectclass_id 
+    <span class="kw">WHERE</span> classname=<span class="st">&#39;BuildingGroundSurface&#39;</span>
+),
+surfaceGeometries <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> *
+    <span class="kw">FROM</span> citydb.surface_geometry <span class="kw">INNER</span> <span class="kw">JOIN</span> groundSurfaces
+    <span class="kw">ON</span> groundSurfaces.lod2_multi_surface_id = surface_geometry.parent_id
+    <span class="kw">WHERE</span> geometry <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>
+),
+heights <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> measured_height, surfaceGeometries.*
+    <span class="kw">FROM</span> citydb.building <span class="kw">INNER</span> <span class="kw">JOIN</span> surfaceGeometries
+    <span class="kw">ON</span> building.id = surfaceGeometries.building_id
+)
+<span class="kw">SELECT</span> <span class="fu">row_number</span>() <span class="kw">OVER</span>() <span class="kw">As</span> <span class="kw">id</span>, building_id, 
+measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span class="kw">FROM</span> heights;</code></pre></div>
+</section>
+</section>
+<section id="section-19" class="level1">
+<h1></h1>
+<section id="export-building-data-with-qgis---ii" class="level2">
+<h2>Export building data with QGIS - II</h2>
+<figure>
+<img src="./pictures/qgis_db3.png" alt="" />
+</figure>
+</section>
+</section>
+<section id="section-20" class="level1">
+<h1></h1>
+<section id="export-building-data-with-qgis---iii" class="level2">
+<h2>Export building data with QGIS - III</h2>
+<figure>
+<img src="./pictures/qgis_db4.png" alt="" />
+</figure>
+</section>
+</section>
+<section id="section-21" class="level1">
+<h1></h1>
+<section id="gerardos-stuff" class="level2">
+<h2>Gerardo's Stuff</h2>
+</section>
+</section>
+<section id="section-22" class="level1">
+<h1></h1>
+<section id="outlook-local" class="level2">
+<h2>Outlook LoCaL</h2>
+<p>Architecture <img src="./pictures/local_arch.png" alt="" /></p>
+</section>
+</section>
+<section id="section-23" class="level1">
+<h1></h1>
+<section id="outlook-local-1" class="level2">
+<h2>Outlook LoCaL</h2>
+<p>Information View <img src="./pictures/local_building.png" alt="" /></p>
+</section>
+</section>
+<section id="section-24" class="level1">
+<h1></h1>
+<section id="friday" class="level2">
+<h2>Friday!</h2>
+</section>
+</section>
+<section id="section-25" class="level1">
 <h1></h1>
 <section id="create-database" class="level2">
 <h2>Create Database</h2>
@@ -544,7 +659,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>It is already done on the VM! \o/</p>
 </section>
 </section>
-<section id="section-17" class="level1">
+<section id="section-26" class="level1">
 <h1></h1>
 <section id="create-3d-city-database-3dcitydb" class="level2">
 <h2>Create 3D City Database (3DCityDB)</h2>
@@ -555,7 +670,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 <span class="kw">psql</span> ghg_handson -f CREATE_DB.sql</code></pre></div>
 </section>
-<section id="section-18" class="level2">
+<section id="section-27" class="level2">
 <h2></h2>
 <p>Setup requires user input:</p>
 <ol type="1">
@@ -568,11 +683,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783</strong></p>
 </section>
 </section>
-<section id="section-19" class="level1">
+<section id="section-28" class="level1">
 <h1></h1>
 <section id="import-city-model" class="level2">
 <h2>Import City Model</h2>
-<p>Start 3D City Database Importer/Exporter <img src="./pictures/impexp.png" alt="impexp" /></p>
+<p>Start 3D City Database Importer/Exporter</p>
 </section>
 <section id="connect-to-database" class="level2">
 <h2>Connect to Database</h2>
@@ -587,7 +702,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 </section>
 </section>
-<section id="section-20" class="level1">
+<section id="section-29" class="level1">
 <h1></h1>
 <section id="play-around-with-pgadmin" class="level2">
 <h2>Play around with pgAdmin</h2>
@@ -640,7 +755,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </figure>
 </section>
 </section>
-<section id="section-21" class="level1">
+<section id="section-30" class="level1">
 <h1></h1>
 <section id="export-data-with-qgis" class="level2">
 <h2>Export data with QGIS</h2>

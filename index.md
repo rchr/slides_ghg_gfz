@@ -4,6 +4,13 @@
 % 22. - 23. November 2015
 
 #
+## Agenda
+
+* Thursday: General introduction into tools and workflows
+
+* Friday: Practical hands-on session
+
+#
 ## CityGML Recap 
 
 * Application independent geospatial information model
@@ -61,7 +68,9 @@ Table: Table *Building*
 ## Agenda
 
 * 3D City Database (3DCityDB)
+
 * 3D City Database Importer/Exporter
+
 * QGIS
 
 # 
@@ -80,6 +89,20 @@ Realized as relational database schema for:
 
 - **PostgreSQL/PostGIS**
 - Oracle Spatial
+
+#
+## Don't be afraid!
+
+* May appear complex in the beginning (60 tables)
+	
+* But!
+	
+	* Tables are strucuted logically
+
+	* You probably do not use all tables
+
+--&gt; 3DCityDB not as complex as it seems!
+
 
 #
 ## 3DCityDB - Building Schema
@@ -139,17 +162,6 @@ Maximum Indexes per Table		   Unlimited
 
 ## Architecture
 
-* The library (frontend) sends user requests over the network to the postmaster. 
-* Postmaster starts a new backend server process and connects the frontend process to the new server. 
-* Frontend process and the backend server communicate without intervention by the postmaster. 
-* the postmaster and the backend always run on the same machine (the database server), 
-while the frontend application may run anywhere. 
-* data base server can contain many databases
-* PostgreSQL uses a message-based protocol for communication between frontends and backends (clients and servers)
-* The protocol is supported over TCP/IP 
-
-##
-
 ![client server](./pictures/client_server.png)
 
 ## SQL 
@@ -176,34 +188,41 @@ while the frontend application may run anywhere.
 
 * Create Database
 ```sql
-CREATE TABLE measurements(id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
+CREATE TABLE measurements (id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
 ```
 
 * Insert Data
 ```sql
-INSERT INTO mesuremetns VALUES('2014-09-01', 10.456);
+INSERT INTO mesurements 
+VALUES('2014-09-01', 10.456);
 ```
 
 * Edit Data
 ```sql
-UPDATE measurements SET value = value + 1;
+UPDATE measurements 
+SET value = value + 1;
 ```
 
 ## SQL syntax - II
 
 * Query Data
 ```sql
-SELECT value FROM measurements;
+SELECT value 
+FROM measurements;
 ```
 
 * Comparison/Filter
 ```sql
-SELECT value FROM measurements WHERE date > '2013-01-01';
+SELECT value 
+FROM measurements 
+WHERE date > '2013-01-01';
 ```
 
 * Summary and Computations
 ```sql
-SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'
+SELECT MAX(value) AS max_val 
+FROM measurements 
+WHERE date > '2013-01-01'
 ```
 
 #
@@ -214,86 +233,98 @@ SELECT MAX(value) AS max_val FROM measurements WHERE date > '2013-01-01'
 * Support for spatial objects (geometry, geography, raster)
 
 * Spatial functions
+	* E.g. `ST_Intersects(geomA, geomB)`
 
 * Multi-dimensional spatial indexing
 
 
-## Additional data type for a geometry
+## Additional Data Type for Geometry
 
-The geometry is stored in a extra column, usually termed *geom* or *the_geom*, all based
+* The geometry is stored in a extra column, usually termed *geom* or *the_geom*, all based
 the following [link](http://postgis.net/docs/manual-2.1/using_postgis_dbmanagement.html)
  
-* uses Well-Known Binary (WKB) and Well-Known Text (WKT) Representations defined by *OGC*
-* POINT (0 0)
-* LINESTRING (0 0,1 1,1 2)
-* POLYGON ((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))
-* MULTIPOINT ((0 0),(1 2))
-* MULTILINESTRING ((0 0,1 1,1 2),(2 3,3 2,5 4))
+* Uses Well-Known Binary (WKB) and Well-Known Text (WKT) Representations defined by *OGC*
+
+* Example WKB:
+	* POINT (10 10)
+	* LINESTRING (10 10,20 20,30 40)
+	* POLYGON ((10 10, 10 20, 20 20, 20 15, 10 10))
+	* MULTIPOINT ((0 0),(1 2))
+	* MULTILINESTRING ((0 0,1 1,1 2),(2 3,3 2,5 4))
 
 
 ## PostGIS provides 
 
-* Processing and analytic functions for both vector and raster data for splicing, dicing, morphing, reclassifying, and collecting/unioning with the power of SQL
-* raster map algebra for fine-grained raster processing
-* Spatial reprojection SQL callable functions for both vector and raster data
-* Support for importing / exporting ESRI shapefile vector data via both commandline and GUI packaged tools and support for more formats via other 3rd-party Open Source tools
-* Packaged command-line for importing raster data from many standard formats: GeoTiff, NetCDF, PNG, JPG to name a few
-* Rendering and importing vector data support functions for standard textual formats such as KML,GML, GeoJSON,GeoHash and WKT using SQL 
-* Rendering raster data in various standard formats GeoTIFF, PNG, JPG, NetCDF, to name a few using SQL
-* Seamless raster/vector SQL callable functions for extrusion of pixel values by geometric region, running stats by region, clipping rasters by a geometry, and vectorizing rasters
+* Processing and analytic functions for both vector and raster data (e.g. splicing, dicing, morphing, reclassifying, and unioning)
+
+* Raster map algebra
+
+* Functions for spatial reprojection 
+
+* Support for ESRI shapefile vector data (+ more formats via 3rd-party tools)
+
+* Importing data from many standard formats
+	* Raster data (GeoTiff, NetCDF, PNG, JPG, ...)
+	* Vector data (KML,GML, GeoJSON, GeoHash and WKT) 
+
+## PostGIS provides (cont.)
+	
+* Rendering raster data in various standard formats GeoTIFF, PNG, JPG, NetCDF, ...
+
+* Seamless raster/vector functions for extrusion of pixel values by geometric region, running stats by region, clipping rasters by a geometry, and vectorizing rasters
+
 * 3D object support, spatial index, and functions
-* Network Topology support
 
-## PostGIS functions
+* Network topology 
 
-**the PostGIS extension offers *full* GIS functionality ...**
+## PostGIS as a GIS
 
-* reprojection
-* area calculations 
-* intersect, union, merge ... 
+* **PostGIS offers *full* GIS functionality ...**
+	* reprojection
+	* area calculations 
+	* intersect, union, merge ... 
 
-\
-\
+* **... among all data-types**
+	* all vector types supported (point, line, area ...)
+	* raster layers supported as well
 
+* **and standard interfaces for visualization**
+	* QGIS, GRASS spatial layers from a Postgres DB out of the box
+	* ArcMap is supposed to do so as well
 
-**... among all data-types**
+## PostGIS Functions
 
-* all vector types supported (point, line, area ...)
-* raster layers supported as well
+* '`ST_`' prefix (Convention for spatial type)
+* Functions to work with the *geom* column
 
-\
-\
-
-
-**and standard interfaces for visualization**
-
-* QGIS, GRASS spatial layers from a Postgres DB out of the box
-* ArcMap is supposed to do so as well
-
-
-## ST\_() Functions
-
-A bunch of ST\_() Functions are available to work with the *geom* column
-
-* getting the CRS of the table/layer
-
+* Getting the CRS of the table/layer
 ```sql
-SELECT ST_SRID(geom) from catchments;
+SELECT ST_SRID(geom)
+FROM catchments;
 ```
 
-* re-project a column into a different CRS 
-
+* Re-project geometry into a different CRS 
 ```sql
-UPDATE subbasins SET geom = ST_TRANSFORM(geom, 4326);
+UPDATE subbasins 
+SET geom = ST_TRANSFORM(geom, 4326);
 ```
 
 ## PostGIS - Example
 
+* Select cities with certain area and population
 ```sql
 SELECT name, pop FROM cities 
 WHERE pop < 300000  
 AND ST_Area(cities.the_geom) < 400000000;
 ```
+
+* Select houses located in the suburbs
+```sql
+SELECT houses.*
+FROM houses, suburbs
+WHERE ST_Intersects(houses.geom, suburbs.geom);
+```
+
 
 #
 ## 3D City Database Importer/Exporter
@@ -402,7 +433,7 @@ This basically means that we shouldn't store any data that can either be derived
 [code guru](http://www.codeguru.com/csharp/.net/net_data/article.php/c19615/Introduction-to-Relational-Databases--Part-1-Theoretical-Foundation.htm)
 
 #
-## Hands-On
+## Hands-On 
 
 Create Database
 
@@ -413,6 +444,63 @@ Import City Model
 Inspect Database with pgAdmin
 
 Export building data with QGIS
+
+#
+## Thursday!
+
+#
+## Export building data with QGIS - I
+
+Query:
+
+```sql
+WITH
+groundSurfaces AS (
+	SELECT thematic_surface.* 
+	FROM citydb.thematic_surface INNER JOIN citydb.objectclass 
+	ON objectclass.id = thematic_surface.objectclass_id 
+	WHERE classname='BuildingGroundSurface'
+),
+surfaceGeometries AS (
+	SELECT *
+	FROM citydb.surface_geometry INNER JOIN groundSurfaces
+	ON groundSurfaces.lod2_multi_surface_id = surface_geometry.parent_id
+	WHERE geometry IS NOT NULL
+),
+heights AS (
+	SELECT measured_height, surfaceGeometries.*
+	FROM citydb.building INNER JOIN surfaceGeometries
+	ON building.id = surfaceGeometries.building_id
+)
+SELECT row_number() OVER() As id, building_id, 
+measured_height, ST_Force2d(geometry) AS footprint FROM heights;
+```
+
+#
+## Export building data with QGIS - II
+
+![](./pictures/qgis_db3.png)
+
+#
+## Export building data with QGIS - III
+
+![](./pictures/qgis_db4.png)
+
+#
+## Gerardo's Stuff
+
+#
+## Outlook LoCaL
+Architecture
+![](./pictures/local_arch.png)
+
+#
+## Outlook LoCaL
+Information View
+![](./pictures/local_building.png)
+
+#
+## Friday!
 
 # 
 ## Create Database
@@ -460,7 +548,7 @@ Setup requires user input:
 #
 ## Import City Model
 
-Start 3D City Database Importer/Exporter ![impexp](./pictures/impexp.png) 
+Start 3D City Database Importer/Exporter 
 
 ## Connect to Database
 
