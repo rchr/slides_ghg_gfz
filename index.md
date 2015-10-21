@@ -135,6 +135,67 @@ Subset of the building schema
 
 * pgAdmin as GUI for administration
 
+## SQL 
+
+* **S**tructured **Q**uery **L**anguage
+* Language to save, edit and query data in relational data bases
+* First version in 1974 (IBM) 
+* Became a standard of the American National Standards Institute (ANSI) in 1986
+* Revised in 1999: SQL99 or SQL3
+* SQL has standards but also some pecularities depending on the database management system
+* Used to 'talk' to the database server
+* Used as front end for postgresql
+* Case sensitive (usually upper case for keywords)
+
+## Ways to use SQL
+
+* Console command (psql -h hostaddress -U  db_name)
+
+* GUI (pgadmin)
+
+* Interfaces to programming languages (R, python, Java, etc.)
+
+## SQL Syntax - I
+
+* Create Database
+```sql
+CREATE TABLE measurements (id BIGINT NOT NULL DEFAULT, date TIMESTAMP WITH TIME ZONE, value DOUBLE PRECISION);
+```
+
+* Insert Data
+```sql
+INSERT INTO mesurements 
+VALUES('2014-09-01', 10.456);
+```
+
+* Edit Data
+```sql
+UPDATE measurements 
+SET value = value + 1;
+```
+
+## SQL syntax - II
+
+* Query Data
+```sql
+SELECT value 
+FROM measurements;
+```
+
+* Comparison/Filter
+```sql
+SELECT value 
+FROM measurements 
+WHERE date > '2013-01-01';
+```
+
+* Summary and Computations
+```sql
+SELECT MAX(value) AS max_val 
+FROM measurements 
+WHERE date > '2013-01-01'
+```
+
 ## PostgreSQL
 
 ![](./pictures/icon_postgresql.png)
@@ -239,11 +300,30 @@ WHERE date > '2013-01-01'
 
 * Support for spatial objects (geometry, geography, raster)
 
-* Spatial functions
-	* E.g. `ST_Intersects(geomA, geomB)`
+* Spatial predicates (interaction of geometries)
+
+* Spatial operators
+	* Measurements (area, distance, length, etc.)
+	* Set operations (union, difference, etc.)
 
 * Multi-dimensional spatial indexing
 
+#
+## PostGIS - Example
+
+* Select cities with certain area and population
+```sql
+SELECT name, pop FROM cities 
+WHERE pop < 300000  
+AND ST_Area(cities.the_geom) < 400000000;
+```
+
+* Select houses located in the suburbs
+```sql
+SELECT houses.*
+FROM houses, suburbs
+WHERE ST_Intersects(houses.geom, suburbs.geom);
+```
 
 ## Additional Data Type for Geometry
 
@@ -495,6 +575,13 @@ measured_height, ST_Force2d(geometry) AS footprint FROM heights;
 
 #
 ## Gerardo's Stuff
+
+#
+## Outlook LoCaL
+
+Low Carbon City Lab
+
+![](./pictures/local_small.png)
 
 #
 ## Outlook LoCaL
