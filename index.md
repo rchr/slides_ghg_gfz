@@ -26,9 +26,37 @@
 
 * **Data model (UML)** and **exchange format** (based on GML3)
 
-**However!**
+#
+## CityGML Thematic Modelling
 
-CityGML datasets may become very large --&gt; Use database to work with!
+![Source: Kolbe, 2012](./pictures/citygml_thematic_modelling.png)
+
+#
+## Example: Building Model
+
+* Coherent aggregation of spatial and semantical components
+
+    * (Recursive) composition of building parts
+    
+    * Thematic surfaces (roof, wall, etc. surfaces) [from LOD2]
+    
+    * Building installations (stairs, balconies) [from LOD2]
+    
+    * Openings (doors, windows) [from LOD3]
+    
+    * Rooms and furniture [from LOD4]
+
+#
+## Building Model LOD2 - UML Diagram
+
+![Source: Kolbe, 2012](./pictures/citygml_building_lod2.png)
+
+#
+## However!
+
+CityGML datasets may become very large 
+
+--&gt; Use database to work with!
 
 #
 ## Need for Database? Some Examples!
