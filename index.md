@@ -578,7 +578,9 @@ measured_height, ST_Force2d(geometry) AS footprint FROM heights;
 ![](./pictures/qgis_db4.png)
 
 #
-## Gerardo's Stuff
+## Eddy Footprint with 3D City Model
+
+Footprint provided by Gerardo Fratini!
 
 #
 ## Outlook LoCaL
