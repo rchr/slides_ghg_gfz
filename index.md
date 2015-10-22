@@ -135,6 +135,7 @@ Subset of the building schema
 
 * pgAdmin as GUI for administration
 
+#
 ## SQL 
 
 * **S**tructured **Q**uery **L**anguage
@@ -147,6 +148,7 @@ Subset of the building schema
 * Used as front end for postgresql
 * Case sensitive (usually upper case for keywords)
 
+#
 ## Ways to use SQL
 
 * Console command (psql -h hostaddress -U  db_name)
@@ -155,6 +157,7 @@ Subset of the building schema
 
 * Interfaces to programming languages (R, python, Java, etc.)
 
+# 
 ## SQL Syntax - I
 
 * Create Database
@@ -174,6 +177,7 @@ UPDATE measurements
 SET value = value + 1;
 ```
 
+#
 ## SQL syntax - II
 
 * Query Data
