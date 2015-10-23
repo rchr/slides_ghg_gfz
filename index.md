@@ -774,7 +774,11 @@ psql ghg_handson -f CREATE_DB.sql
 
 ## Do the import
 
-![](./pictures/impexp_import.png)
+Path to CityGML file:
+
+`~/Desktop/ghg_flux_ws/city_gml/hands-on/data/citymodel/berlin/`
+
+![](./pictures/impexp_file.png)
 
 #
 ## Play around with pgAdmin
