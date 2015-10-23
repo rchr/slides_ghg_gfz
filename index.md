@@ -920,5 +920,5 @@ Do a right-click onto the layer:
 ## Questions?
 
 Live coding examples are provided here:
-
+\
 [https://gist.github.com/sluedtke/c69b545a0937f560245f](https://gist.github.com/sluedtke/c69b545a0937f560245f)
