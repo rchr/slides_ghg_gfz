@@ -789,6 +789,36 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </section>
 <section id="section-36" class="level1">
 <h1></h1>
+<section id="slides-online" class="level2">
+<h2>Slides Online</h2>
+<p>Open presentation so that you can copy paste needed commands!</p>
+<p><a href="http://rchr.github.io/slides_ghg_gfz" class="uri">http://rchr.github.io/slides_ghg_gfz</a></p>
+</section>
+</section>
+<section id="section-37" class="level1">
+<h1></h1>
+<section id="we-owe-you-something" class="level2">
+<h2>We owe you something!</h2>
+<p>Eddy Footprint with 3D City Model</p>
+<p>Footprint provided by Gerardo Fratini!</p>
+</section>
+</section>
+<section id="section-38" class="level1">
+<h1></h1>
+<section id="recap-need-for-database-some-examples" class="level2">
+<h2>Recap: Need for Database? Some Examples!</h2>
+<ul>
+<li><p>Multiple simultaneous changes to data (concurrency)</p></li>
+<li><p>Data changes on a regular basis</p></li>
+<li><p>Large data sets where you only need some observations/ variables</p></li>
+<li><p>Share huge data set among many people (data consistency in a working group!)</p></li>
+<li><p>Rapid queries</p></li>
+<li><p>Web interfaces to data, especially dynamic data</p></li>
+</ul>
+</section>
+</section>
+<section id="section-39" class="level1">
+<h1></h1>
 <section id="hands-on-1" class="level2">
 <h2>Hands-On</h2>
 <p>Start Virtual Machine</p>
@@ -799,7 +829,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <p>Export building data with QGIS</p>
 </section>
 </section>
-<section id="section-37" class="level1">
+<section id="section-40" class="level1">
 <h1></h1>
 <section id="start-virtual-machine" class="level2">
 <h2>Start Virtual Machine</h2>
@@ -819,7 +849,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </ul>
 </section>
 </section>
-<section id="section-38" class="level1">
+<section id="section-41" class="level1">
 <h1></h1>
 <section id="create-database" class="level2">
 <h2>Create Database</h2>
@@ -833,7 +863,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </ul>
 </section>
 </section>
-<section id="section-39" class="level1">
+<section id="section-42" class="level1">
 <h1></h1>
 <section id="create-database-1" class="level2">
 <h2>Create Database</h2>
@@ -845,21 +875,28 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <p>It is already done on the VM! \o/</p>
 </section>
 </section>
-<section id="section-40" class="level1">
+<section id="section-43" class="level1">
 <h1></h1>
 <section id="create-3d-city-database-3dcitydb" class="level2">
 <h2>Create 3D City Database (3DCityDB)</h2>
 <p>The 3DCityDB is a relational database schema</p>
 <p>Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS</p>
 <p>Schema is like a 'blueprint' of the database</p>
+<p>That means, the database structure is created, no data is added!</p>
 <p>To create 3DCity DB:</p>
 <p>Start 'Terminal Emulator'</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 <span class="kw">psql</span> ghg_handson -f CREATE_DB.sql</code></pre></div>
 </section>
-<section id="section-41" class="level2">
-<h2></h2>
-<p>Setup requires user input:</p>
+<section id="specify-spatial-reference-system" class="level2">
+<h2>Specify Spatial Reference System</h2>
+<ul>
+<li><p>Coordinates of Berlin's city model defined in:</p>
+<ul>
+<li>EPSG:25833</li>
+<li>ETRS89 / UTM zone 33N</li>
+</ul></li>
+<li><p>Setup requires user input:</p>
 <ol type="1">
 <li>Spatial Reference Identifier for geometry objects (SRID):</li>
 </ol>
@@ -867,10 +904,11 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <ol start="2" type="1">
 <li>GML conformant URN encoding for gml:srsName attributes:</li>
 </ol>
-<p><strong>urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783</strong></p>
+<p><strong>urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783</strong></p></li>
+</ul>
 </section>
 </section>
-<section id="section-42" class="level1">
+<section id="section-44" class="level1">
 <h1></h1>
 <section id="import-city-model" class="level2">
 <h2>Import City Model</h2>
@@ -894,7 +932,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </figure>
 </section>
 </section>
-<section id="section-43" class="level1">
+<section id="section-45" class="level1">
 <h1></h1>
 <section id="play-around-with-pgadmin" class="level2">
 <h2>Play around with pgAdmin</h2>
@@ -947,7 +985,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </figure>
 </section>
 </section>
-<section id="section-44" class="level1">
+<section id="section-46" class="level1">
 <h1></h1>
 <section id="export-data-with-qgis" class="level2">
 <h2>Export data with QGIS</h2>
@@ -1046,6 +1084,13 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <figure>
 <img src="./pictures/qgis_db6.png" alt="" />
 </figure>
+</section>
+</section>
+<section id="section-47" class="level1">
+<h1></h1>
+<section id="questions-1" class="level2">
+<h2>Questions?</h2>
+<p>Live coding examples are provided here: <a href="https://gist.github.com/sluedtke/c69b545a0937f560245f" class="uri">https://gist.github.com/sluedtke/c69b545a0937f560245f</a></p>
 </section>
 </section>
     </div>

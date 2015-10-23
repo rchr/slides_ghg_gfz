@@ -636,6 +636,35 @@ Focus for tomorrow?
 ## Friday!
 
 #
+## Slides Online
+
+Open presentation so that you can copy paste needed commands!
+
+[http://rchr.github.io/slides_ghg_gfz](http://rchr.github.io/slides_ghg_gfz)
+
+#
+## We owe you something!
+
+Eddy Footprint with 3D City Model
+
+Footprint provided by Gerardo Fratini!
+
+#
+## Recap: Need for Database? Some Examples!
+
+* Multiple simultaneous changes to data (concurrency)
+
+* Data changes on a regular basis
+
+* Large data sets where you only need some observations/ variables
+
+* Share huge data set among many people (data consistency in a working group!)
+
+* Rapid queries
+
+* Web interfaces to data, especially dynamic data
+
+#
 ## Hands-On 
 
 Start Virtual Machine
@@ -704,6 +733,8 @@ Schema results from a mapping of the object-oriented data model of CityGML to th
 
 Schema is like a 'blueprint' of the database
 
+That means, the database structure is created, no data is added!
+
 To create 3DCity DB:
  
 Start 'Terminal Emulator'
@@ -713,17 +744,22 @@ cd /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 psql ghg_handson -f CREATE_DB.sql
 ```
 
-## 
+## Specify Spatial Reference System 
 
-Setup requires user input:
+* Coordinates of Berlin's city model defined in:
 
-1. Spatial Reference Identifier for geometry objects (SRID):
+    * EPSG:25833
+    * ETRS89 / UTM zone 33N
 
-**25833**
+* Setup requires user input:
 
-2. GML conformant URN encoding for gml:srsName attributes:
-
-**urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783**
+    1. Spatial Reference Identifier for geometry objects (SRID):
+    
+    **25833**
+    
+    2. GML conformant URN encoding for gml:srsName attributes:
+    
+    **urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783**
 
 #
 ## Import City Model
@@ -873,3 +909,9 @@ Do a right-click onto the layer:
 
 ## Export to Shape II
 ![](./pictures/qgis_db6.png)
+
+#
+## Questions?
+
+Live coding examples are provided here:
+[https://gist.github.com/sluedtke/c69b545a0937f560245f](https://gist.github.com/sluedtke/c69b545a0937f560245f)
