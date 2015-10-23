@@ -633,7 +633,9 @@ Information View
 Focus for tomorrow?
 
 #
-## Friday!
+## CityGML - Applications, Open Data and Open Source Tools
+
+Friday!
 
 #
 ## Slides Online
