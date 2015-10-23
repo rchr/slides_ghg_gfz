@@ -789,7 +789,53 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </section>
 <section id="section-36" class="level1">
 <h1></h1>
+<section id="hands-on-1" class="level2">
+<h2>Hands-On</h2>
+<p>Start Virtual Machine</p>
+<p>Create Database</p>
+<p>Create 3D City Database</p>
+<p>Import City Model</p>
+<p>Inspect Database with pgAdmin</p>
+<p>Export building data with QGIS</p>
+</section>
+</section>
+<section id="section-37" class="level1">
+<h1></h1>
+<section id="start-virtual-machine" class="level2">
+<h2>Start Virtual Machine</h2>
+<ul>
+<li><p>Open VirtualBox</p></li>
+<li><p>Import virtual machine:</p>
+<ul>
+<li>'File' &gt; 'Import appliance'</li>
+<li>Select downloaded .ova file</li>
+<li>Click 'Next', then 'Import'</li>
+</ul></li>
+<li><p>Start virtual machine</p>
+<ul>
+<li>User: ghg</li>
+<li>Password: potsdam2015</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="section-38" class="level1">
+<h1></h1>
 <section id="create-database" class="level2">
+<h2>Create Database</h2>
+<p>Remember:</p>
+<ul>
+<li><p>We use PostgreSQL as database management system</p></li>
+<li><p>Open source</p></li>
+<li><p>SQL based</p></li>
+<li><p>Use it by console, GUI (pgAdmin), or programming interfaces (R, Python, Java, ...)</p></li>
+<li><p>PostGIS adds spatial functionalities</p></li>
+</ul>
+</section>
+</section>
+<section id="section-39" class="level1">
+<h1></h1>
+<section id="create-database-1" class="level2">
 <h2>Create Database</h2>
 <p>Execute following statement as PostgreSQL admin:</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">DATABASE</span> ghg_handson
@@ -799,18 +845,19 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <p>It is already done on the VM! \o/</p>
 </section>
 </section>
-<section id="section-37" class="level1">
+<section id="section-40" class="level1">
 <h1></h1>
 <section id="create-3d-city-database-3dcitydb" class="level2">
 <h2>Create 3D City Database (3DCityDB)</h2>
 <p>The 3DCityDB is a relational database schema</p>
 <p>Schema results from a mapping of the object-oriented data model of CityGML to the relational data model of the RDBMS</p>
 <p>Schema is like a 'blueprint' of the database</p>
-<p>To create the schema with its tables execute:</p>
+<p>To create 3DCity DB:</p>
+<p>Start 'Terminal Emulator'</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
 <span class="kw">psql</span> ghg_handson -f CREATE_DB.sql</code></pre></div>
 </section>
-<section id="section-38" class="level2">
+<section id="section-41" class="level2">
 <h2></h2>
 <p>Setup requires user input:</p>
 <ol type="1">
@@ -823,11 +870,16 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <p><strong>urn:ogc:def:crs,crs:EPSG::25833,crs:EPSG::5783</strong></p>
 </section>
 </section>
-<section id="section-39" class="level1">
+<section id="section-42" class="level1">
 <h1></h1>
 <section id="import-city-model" class="level2">
 <h2>Import City Model</h2>
-<p>Start 3D City Database Importer/Exporter</p>
+</section>
+<section id="start-3d-city-database-importerexporter" class="level2">
+<h2>Start 3D City Database Importer/Exporter</h2>
+<figure>
+<img src="./pictures/impexp.png" alt="" />
+</figure>
 </section>
 <section id="connect-to-database" class="level2">
 <h2>Connect to Database</h2>
@@ -842,7 +894,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </figure>
 </section>
 </section>
-<section id="section-40" class="level1">
+<section id="section-43" class="level1">
 <h1></h1>
 <section id="play-around-with-pgadmin" class="level2">
 <h2>Play around with pgAdmin</h2>
@@ -895,7 +947,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 </figure>
 </section>
 </section>
-<section id="section-41" class="level1">
+<section id="section-44" class="level1">
 <h1></h1>
 <section id="export-data-with-qgis" class="level2">
 <h2>Export data with QGIS</h2>
@@ -914,7 +966,7 @@ measured_height, ST_Force2d(geometry) <span class="kw">AS</span> footprint <span
 <section id="add-new-database" class="level2">
 <h2>Add New Database</h2>
 <figure>
-<img src="./pictures/qgis_database.png" alt="" />
+<img src="./pictures/qgis_database_small.png" alt="" />
 </figure>
 </section>
 <section id="connect-to-database-1" class="level2">

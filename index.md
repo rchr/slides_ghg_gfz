@@ -635,6 +635,51 @@ Focus for tomorrow?
 #
 ## Friday!
 
+#
+## Hands-On 
+
+Start Virtual Machine
+
+Create Database
+
+Create 3D City Database
+
+Import City Model
+
+Inspect Database with pgAdmin
+
+Export building data with QGIS
+
+#
+## Start Virtual Machine
+
+* Open VirtualBox
+
+* Import virtual machine:
+
+    * 'File' > 'Import appliance'
+    * Select downloaded .ova file
+    * Click 'Next', then 'Import'
+
+* Start virtual machine
+
+    * User: ghg
+    * Password: potsdam2015
+
+#
+## Create Database
+Remember:
+
+* We use PostgreSQL as database management system
+
+* Open source
+
+* SQL based
+
+* Use it by console, GUI (pgAdmin), or programming interfaces (R, Python, Java, ...)
+
+* PostGIS adds spatial functionalities
+
 # 
 ## Create Database
 
@@ -659,7 +704,9 @@ Schema results from a mapping of the object-oriented data model of CityGML to th
 
 Schema is like a 'blueprint' of the database
 
-To create the schema with its tables execute:
+To create 3DCity DB:
+ 
+Start 'Terminal Emulator'
 
 ```bash
 cd /home/ghg/Documents/3DCityDB-3.0.0-postgis/PostgreSQL/SQLScripts/
@@ -681,7 +728,9 @@ Setup requires user input:
 #
 ## Import City Model
 
-Start 3D City Database Importer/Exporter 
+## Start 3D City Database Importer/Exporter 
+
+![](./pictures/impexp.png)
 
 ## Connect to Database
 
@@ -750,7 +799,7 @@ Open the *sql*-query window
 
 ## Add New Database
 
-![](./pictures/qgis_database.png)
+![](./pictures/qgis_database_small.png)
 
 ## Connect to Database
 
