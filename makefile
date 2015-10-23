@@ -11,6 +11,7 @@ index.html: index.md makefile default.revealjs custom.css
 	pandoc  -t  html5\
     --template=default.revealjs \
     --include-in-header custom.css \
+	--highlight-style zenburn\
   	--standalone --section-divs \
    	--variable theme="night" \
    	--variable transition="fade" \
